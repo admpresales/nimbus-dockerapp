@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: 6.2.0
+version: 12.60.4.98
 # Name of the application
-name: da
+name: octane
 # A short description of the application
-description: "Deployment Automation Server"
+description: "ALM Octane for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -20,12 +20,18 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  da:
-    image: admpresales/da-server:${DA_TAG}
+  octane:
+    image: admpresales/octane:OCTANE_TAG
     ports:
-    - "${DA_PORT}:8080"
-    - "${DA_AGENT_PORT}:7918"
-    container_name: ${DA_CONTAINER_NAME}
+    - "${SYNCHRONIZER_AGENT_PORT}:1099"
+    - "${OCTANE_PORT}:8080"
+    - "${INTEGRATION_BRIDGE_PORT}:9081"
+    - "${SYNCHRONIZER_PORT}:9082"
+    container_name: ${OCTANE_CONTAINER_NAME}
+    environment:
+        - OCTANE_HOST
+    hostname: octane.aos.com
+    shm_size: 2g
     networks:
         demo-net:
     extra_hosts:
@@ -37,7 +43,10 @@ networks:
 
 --
 # This section contains the default values for your application settings.
-DA_TAG: 6.2.0_di
-DA_CONTAINER_NAME: da
-DA_PORT: 8089
-DA_AGENT_PORT: 7918
+OCTANE_HOST: nimbusserver.aos.com
+OCTANE_TAG: 12.60.4.98_dis
+OCTANE_CONTAINER_NAME: octane
+INTEGRATION_BRIDGE_PORT: 9081
+OCTANE_PORT: 8085
+SYNCHRONIZER_AGENT_PORT: 1099
+SYNCHRONIZER_PORT: 9082
