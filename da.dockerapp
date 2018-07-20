@@ -1,0 +1,43 @@
+# This section contains your application metadata.
+# Version of the application
+version: 6.2.0
+# Name of the application
+name: da
+# A short description of the application
+description: "Deployment Automation Server"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+--
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  da:
+    image: admpresales/da-server:${DA_TAG}
+    ports:
+    - "${DA_PORT}:8080"
+    - "${DA_AGENT_PORT}:7918"
+    container_name: ${DA_CONTAINER_NAME}
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+networks:
+   demo-net:
+     external: true
+
+--
+# This section contains the default values for your application settings.
+DA_TAG: 6.2.0
+DA_CONTAINER_NAME: da
+DA_PORT: 8089
+DA_AGENT_PORT: 7918
