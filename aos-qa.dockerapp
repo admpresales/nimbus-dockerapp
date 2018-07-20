@@ -81,7 +81,7 @@ networks:
 --
 # This section contains the default values for your application settings.
 ACCOUNT_AGENT_NAME: "aos-accountservice-qa"
-ACCOUNT_NAME: aos_accountservice
+ACCOUNT_NAME: aos_accountservice_qa
 ACCOUNT_IP: nimbusserver
 ACCOUNT_PORT: "8401"
 MAIN_AGENT_NAME: "aos-main-qa"
