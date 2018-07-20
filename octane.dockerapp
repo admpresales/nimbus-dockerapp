@@ -31,7 +31,7 @@ services:
     environment:
         - OCTANE_HOST
     hostname: octane.aos.com
-    shm_size: ${SHM_SIZE}
+    shm_size: ${OCTANE_SHM_SIZE}
     networks:
         demo-net:
     extra_hosts:
@@ -50,4 +50,4 @@ INTEGRATION_BRIDGE_PORT: 9081
 OCTANE_PORT: 8085
 SYNCHRONIZER_AGENT_PORT: 1099
 SYNCHRONIZER_PORT: 9082
-SHM_SIZE: 2G
+OCTANE_SHM_SIZE: 2G
