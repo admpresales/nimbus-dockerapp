@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   octane:
-    image: admpresales/octane:OCTANE_TAG
+    image: admpresales/octane:${OCTANE_TAG}
     ports:
     - "${SYNCHRONIZER_AGENT_PORT}:1099"
     - "${OCTANE_PORT}:8080"
