@@ -1,0 +1,43 @@
+# This section contains your application metadata.
+# Version of the application
+version: 2.70
+# Name of the application
+name: mc
+# A short description of the application
+description: "Micro Focus Mobile Center for Nimbus Demo Platform"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+--
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  devops:
+    image: admpresales/MC:${MC_TAG}
+    ports:
+    - "${MC_PORT}:8084"
+    container_name: ${MC_CONTAINER_NAME}
+    shm_size: 2G
+    networks:
+        demo-net:
+          ipv4_address: 172.50.0.10
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+networks:
+   demo-net:
+     external: true
+
+--
+# This section contains the default values for your application settings.
+MC_CONTAINER_NAME: mc
+MC_TAG: 2.70_di
+MC_PORT: 8090
