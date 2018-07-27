@@ -21,14 +21,12 @@ targets:
 version: '3.5'
 services:
   devops:
-    image: admpresales/MC:${MC_TAG}
+    image: admpresales/mc:${MC_TAG}
     ports:
     - "${MC_PORT}:8084"
     container_name: ${MC_CONTAINER_NAME}
+    hostname: nimbusserver.aos.com
     shm_size: 2G
-    networks:
-        demo-net:
-          ipv4_address: 172.50.0.10
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -40,4 +38,4 @@ networks:
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
 MC_TAG: 2.70_di
-MC_PORT: 8090
+MC_PORT: 8084

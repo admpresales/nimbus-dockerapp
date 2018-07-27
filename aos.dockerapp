@@ -21,6 +21,7 @@ targets:
 version: '3.5'
 services:
   aos_postgres:
+    build: .
     image: admpresales/aos-postgres:${POSTGRES_TAG}
     ports:
     - "${POSTGRES_PORT}:5432"
@@ -31,6 +32,7 @@ services:
     networks:
         demo-net:
   aos_accountservice:
+    build: .
     image: admpresales/aos-accountservice:${TAG}
     ports:
     - "${ACCOUNT_PORT}:8080"
@@ -53,6 +55,7 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
   aos_main:
+    build: .
     image: admpresales/aos-main-app:${TAG}
     ports:
     - "${MAIN_PORT}:8080"
