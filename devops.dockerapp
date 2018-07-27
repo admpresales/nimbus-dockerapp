@@ -21,7 +21,6 @@ targets:
 version: '3.5'
 services:
   devops:
-    build: .
     image: admpresales/devops:${DEVOPS_TAG}
     ports:
     - "${JENKINS_PORT}:8080"
