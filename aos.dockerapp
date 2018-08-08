@@ -27,7 +27,6 @@ services:
     environment:
     - POSTGRES_PORT
     container_name: ${POSTGRES_NAME}
-    restart: always
     networks:
         demo-net:
   aos_accountservice:
@@ -46,7 +45,6 @@ services:
     depends_on:
     - "aos_postgres"
     container_name: ${ACCOUNT_NAME}
-    restart: always
     networks:
         demo-net:
     extra_hosts:
@@ -67,7 +65,6 @@ services:
     depends_on:
     - "aos_accountservice"
     container_name: ${MAIN_NAME}
-    restart: always
     networks:
         demo-net:
     extra_hosts:
