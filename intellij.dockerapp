@@ -27,7 +27,7 @@ services:
       - "${LEANFT_ENGINE_PORT}:5095"
     container_name: ${INTELLIJ_CONTAINER_NAME}
     environment:
-      - "DISPLAY=unix$${DISPLAY}"
+      "DISPLAY=unix$${DISPLAY}"
     network_mode: "host"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
