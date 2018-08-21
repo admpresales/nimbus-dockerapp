@@ -16,7 +16,7 @@ targets:
   swarm: false
   kubernetes: false
 
---
+---
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
@@ -34,7 +34,7 @@ networks:
    demo-net:
      external: true
 
---
+---
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
 MC_TAG: 2.70_di

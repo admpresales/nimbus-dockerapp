@@ -16,7 +16,7 @@ targets:
   swarm: false
   kubernetes: false
 
---
+---
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
@@ -75,7 +75,7 @@ networks:
      external: true
 
 
---
+---
 # This section contains the default values for your application settings.
 ACCOUNT_AGENT_NAME: "aos-accountservice-dev"
 ACCOUNT_NAME: aos_accountservice
