@@ -34,5 +34,5 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-SCA_TAG: 18.10-20190101
+SCA_TAG: 18.10
 SCA_CONTAINER_NAME: sca
