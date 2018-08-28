@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 10.5.1
+version: 10.7.0
 # Name of the application
 name: autopass
 # A short description of the application
@@ -40,7 +40,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-AUTOPASS_TAG: 10.5.1
+AUTOPASS_TAG: 10.7.0
 AUTOPASS_CONTAINER_NAME: autopass
 AUTOPASS_PORT: 5814
 HTTP_PORT: 5815
