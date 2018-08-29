@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: 2.80
+version: 12.60
 # Name of the application
-name: mc
+name: alm
 # A short description of the application
-description: "Micro Focus Mobile Center for Nimbus Demo Platform"
+description: "ALM .NET for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -20,13 +20,16 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  devops:
-    image: admpresales/mc:${MC_TAG}
+  octane:
+    image: admpresales/alm:${OCTANE_TAG}
     ports:
-    - "${MC_PORT}:8084"
-    container_name: ${MC_CONTAINER_NAME}
-    hostname: nimbusserver.aos.com
-    shm_size: 2G
+    - "${ALM_PORT}:8080"
+    - "${ALM_DB_PORT}:1521"
+    container_name: ${ALM_CONTAINER_NAME}
+    hostname: alm.aos.com
+    shm_size: ${ALM_SHM_SIZE}
+    networks:
+        demo-net:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -36,6 +39,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-MC_CONTAINER_NAME: mc
-MC_TAG: 2.80_di
-MC_PORT: 8084
+ALM_TAG: 12.60_di
+ALM_PORT: 8082
+ALM_DB_PORT: 1521
+ALM_SHM_SIZE: 2G
