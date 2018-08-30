@@ -30,7 +30,7 @@ services:
     container_name: ${DEVOPS_CONTAINER_NAME}
     networks:
         demo-net:
-          ipv4_address: 172.50.0.10
+          ipv4_address: ${DEVOPS_IP}
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -46,3 +46,4 @@ JENKINS_PORT: 8090
 JENKINS_AGENT_PORT: 50000
 GIT_PORT: 8091
 SSH_PORT: 9022
+DEVOPS_IP: 172.50.0.10
