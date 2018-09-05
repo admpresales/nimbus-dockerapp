@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 1.1.5.1
+version: 1.1.5.2
 # Name of the application
 name: devops
 # A short description of the application
@@ -41,7 +41,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 DEVOPS_CONTAINER_NAME: devops
-DEVOPS_TAG: 1.1.5.1
+DEVOPS_TAG: 1.1.5.2
 JENKINS_PORT: 8090
 JENKINS_AGENT_PORT: 50000
 GIT_PORT: 8091
