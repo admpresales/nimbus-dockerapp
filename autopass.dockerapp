@@ -40,7 +40,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-AUTOPASS_TAG: 10.7.0
+AUTOPASS_TAG: 10.7.0_d
 AUTOPASS_CONTAINER_NAME: autopass
 AUTOPASS_PORT: 5814
 HTTP_PORT: 5815
