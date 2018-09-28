@@ -40,7 +40,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-PPM_TAG: 9.42.0.1_d
+PPM_TAG: ${app.version}.0.1_d
 PPM_CONTAINER_NAME: ppm
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
