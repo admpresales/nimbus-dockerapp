@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   ppm:
-    image: admpresales/ppm:${PPM_TAG}
+    image: admpresales/ppm:${app.version}.0.1_d
     ports:
     - "${PPM_PORT}:8080"
     - "${PPM_DB_PORT}:1099"
@@ -40,7 +40,6 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-PPM_TAG: ${app.version}.0.1_d
 PPM_CONTAINER_NAME: ppm
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
