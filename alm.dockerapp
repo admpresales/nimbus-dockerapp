@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   alm:
-    image: admpresales/alm:${ALM_TAG}
+    image: "admpresales/alm:${ALM_TAG}"
     ports:
     - "${ALM_PORT}:8080"
     - "${ALM_DB_PORT}:1521"
