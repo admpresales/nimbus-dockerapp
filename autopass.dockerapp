@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 10.7.0
+version: "10.7.0"
 # Name of the application
 name: autopass
 # A short description of the application

@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 2.80
+version: "2.80"
 # Name of the application
 name: mc
 # A short description of the application

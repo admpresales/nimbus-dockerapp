@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 1.1.5
+version: "1.1.5"
 # Name of the application
 name: aos
 # A short description of the application
