@@ -20,8 +20,8 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  octane:
-    image: admpresales/alm:${OCTANE_TAG}
+  alm:
+    image: admpresales/alm:${ALM_TAG}
     ports:
     - "${ALM_PORT}:8080"
     - "${ALM_DB_PORT}:1521"
