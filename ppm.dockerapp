@@ -41,7 +41,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 PPM_CONTAINER_NAME: ppm
-PPM_TAG: 9.50
+PPM_TAG: '9.50'
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
 PPM_DB_PORT: 1098
