@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: "12.60"
+version: "4.20"
 # Name of the application
-name: alm
+name: sv
 # A short description of the application
-description: "ALM .NET for Nimbus"
+description: "Service Virtualization (SV) for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -20,16 +20,26 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  alm:
-    image: "admpresales/alm:${ALM_TAG}"
+  sv-server:
+    image: admpresales/sv-server:${PPM_TAG}
     ports:
-    - "${ALM_PORT}:8080"
-    - "${ALM_DB_PORT}:1521"
-    container_name: ${ALM_CONTAINER_NAME}
-    hostname: alm.aos.com
-    shm_size: ${ALM_SHM_SIZE}
+    - "${SV_SERVER_AGENT_PORTS}:${SV_SERVER_AGENT_PORTS}"
+    - "${SV_PORT}:6085"
+    container_name: ${SV_SERVER_CONTAINER_NAME}
+    hostname: nimbusserver.aos.com
+    environment:
+      - "SV_SERVER_AGENT_PORTS=${SV_SERVER_AGENT_PORTS}"
+      - "SV_USER=${SV_USER}"
+      - "SV_PASSWORD=${SV_PASSWORD}"
+      - "SV_GROUPS=${SV_GROUPS}"
+    volumes:
+      - /etc/sv-server/
+      - /var/log/sv-server/
+      - /var/lib/sv-server/
+      - /var/cache/sv-server/
     networks:
         demo-net:
+          ipv4_address: 172.50.10.20
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -39,8 +49,10 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-ALM_CONTAINER_NAME: alm
-ALM_TAG: '12.60'
-ALM_PORT: 8082
-ALM_DB_PORT: 1521
-ALM_SHM_SIZE: 2G
+SV_SERVER_CONTAINER_NAME: sv-server
+SV_SERVER_AGENT_PORTS: 7000-7019
+SV_USER: demo
+SV_PASSWORD: Password1
+SV_GROUPS: 'SVM Users,SV Server Administrators'
+SV_TAG: '4.20'
+SV_PORT: 6085
