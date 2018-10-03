@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   sv-server:
-    image: admpresales/sv-server:${PPM_TAG}
+    image: admpresales/sv-server:${SV_TAG}
     ports:
     - "${SV_SERVER_AGENT_PORTS}:${SV_SERVER_AGENT_PORTS}"
     - "${SV_PORT}:6085"
