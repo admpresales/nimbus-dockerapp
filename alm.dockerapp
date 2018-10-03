@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   alm:
-    image: "admpresales/alm:${ALM_TAG}"
+    image: "admpresales/alm:${ALM_TAG}${ALM_CONTAINER_TYPE}"
     ports:
     - "${ALM_PORT}:8080"
     - "${ALM_DB_PORT}:1521"
@@ -40,7 +40,8 @@ networks:
 ---
 # This section contains the default values for your application settings.
 ALM_CONTAINER_NAME: alm
-ALM_TAG: '12.60_di'
+ALM_TAG: '12.60'
 ALM_PORT: 8082
 ALM_DB_PORT: 1521
 ALM_SHM_SIZE: 2G
+ALM_CONTAINER_TYPE: "_di"
