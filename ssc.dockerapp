@@ -33,7 +33,7 @@ services:
     container_name: ssc_db
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: Password1
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
         demo-net:
     extra_hosts:
@@ -49,3 +49,4 @@ SSC_TAG: "18.10"
 DB_TAG: "8.0.12"
 SSC_CONTAINER_NAME: ssc
 DB_CONTAINER_NAME: ssc_db
+MYSQL_ROOT_PASSWORD: Password1
