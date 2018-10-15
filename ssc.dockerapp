@@ -1,0 +1,51 @@
+# This section contains your application metadata.
+# Version of the application
+version: "18.10"
+# Name of the application
+name: ssc
+# A short description of the application
+description: "Fortify Software Security Center (SSC) for Nimbus"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  ssc:
+    image: admpresales/ssc:${SSC_TAG}
+    container_name: ${SSC_CONTAINER_NAME}
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+  ssc_db:
+    image: mysql:${DB_TAG}
+    container_name: ssc_db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: Password1
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+networks:
+   demo-net:
+     external: true
+
+---
+# This section contains the default values for your application settings.
+SSC_TAG: "18.10"
+DB_TAG: "8.0.12"
+SSC_CONTAINER_NAME: ssc
+DB_CONTAINER_NAME: ssc_db
