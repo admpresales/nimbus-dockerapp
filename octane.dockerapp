@@ -44,8 +44,8 @@ networks:
 ---
 # This section contains the default values for your application settings.
 OCTANE_IMAGE: octane
+OCTANE_TAG: octane
 OCTANE_HOST: nimbusserver.aos.com
-OCTANE_VERSION: 12.60.10.90_dis
 OCTANE_CONTAINER_NAME: octane
 INTEGRATION_BRIDGE_PORT: 9081
 OCTANE_PORT: 8085
