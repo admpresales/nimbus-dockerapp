@@ -23,11 +23,13 @@ services:
   ssc:
     image: admpresales/ssc:${SSC_TAG}
     container_name: ${SSC_CONTAINER_NAME}
+    ports:
+      - "${SSC_PORT}:8080"
     networks:
         demo-net:
     extra_hosts:
-        - "nimbusserver.aos.com:172.50.0.1"
-        - "nimbusserver:172.50.0.1"
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
   ssc_db:
     image: mysql:${DB_TAG}
     container_name: ssc_db
@@ -35,10 +37,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
-        demo-net:
+      demo-net:
     extra_hosts:
-        - "nimbusserver.aos.com:172.50.0.1"
-        - "nimbusserver:172.50.0.1"
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
 networks:
    demo-net:
      external: true
@@ -47,6 +49,7 @@ networks:
 # This section contains the default values for your application settings.
 SSC_TAG: "18.10"
 DB_TAG: "8.0.12"
+SSC_PORT: 8086
 SSC_CONTAINER_NAME: ssc
 DB_CONTAINER_NAME: ssc_db
 MYSQL_ROOT_PASSWORD: Password1
