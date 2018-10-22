@@ -33,7 +33,7 @@ services:
   ssc_db:
     image: mysql:${DB_TAG}
     container_name: ssc_db
-    command: --default-authentication-plugin=mysql_native_password --sql-mode=${SQL_MODE}
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ssc_db
@@ -54,4 +54,3 @@ SSC_PORT: 8086
 SSC_CONTAINER_NAME: ssc
 DB_CONTAINER_NAME: ssc_db
 MYSQL_ROOT_PASSWORD: Password1
-SQL_MODE: "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
