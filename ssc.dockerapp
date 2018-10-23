@@ -31,7 +31,7 @@ services:
       - "nimbusserver.aos.com:172.50.0.1"
       - "nimbusserver:172.50.0.1"
   ssc_db:
-    image: mysql:${DB_TAG}
+    image: admpresales/ssc-mysql:${DB_TAG}
     container_name: ssc_db
     command: --default-authentication-plugin=mysql_native_password
     environment:
@@ -49,7 +49,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 SSC_TAG: "18.10"
-DB_TAG: "8.0.12"
+DB_TAG: "18.10-empty"
 SSC_PORT: 8086
 SSC_CONTAINER_NAME: ssc
 DB_CONTAINER_NAME: ssc_db
