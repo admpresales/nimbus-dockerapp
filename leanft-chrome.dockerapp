@@ -1,0 +1,47 @@
+# This section contains your application metadata.
+# Version of the application
+version: 14.50
+# Name of the application
+name: leanft-chrome
+# A short description of the application
+description: "LeanFT image with Chrome"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  intellij:
+    image: functionaltesting/leanft-chrome:${LEANFT_CHROME_TAG}
+    ports:
+      - "${VNC_PORT}:5900"
+      - "${LEANFT_ENGINE_PORT}:5095"
+    container_name: ${LEANFT_CONTAINER_NAME}
+    environment:
+      - "LFT_LIC_SERVER=${LFT_LIC_SERVER}"
+      - "LFT_LIC_ID=${LFT_LIC_ID}"
+      - "LFT_LIC_ID_VERSION=${LFT_LIC_ID_VERSION}
+    networks:
+      demo-net:
+    extra_hosts:
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
+
+---
+# This section contains the default values for your application settings.
+INTELLIJ_CONTAINER_NAME: leanft-chrome
+INTELLIJ_TAG: 14.50
+OBJECTSPY_PORT: 8824
+LEANFT_ENGINE_PORT: 5095
+LFT_LIC_SERVER: autopass
+LFT_LIC_ID: 23078
+LFT_LIC_ID_VERSION: 1
