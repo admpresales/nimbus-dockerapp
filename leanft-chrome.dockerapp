@@ -29,7 +29,7 @@ services:
     environment:
       - "LFT_LIC_SERVER=${LFT_LIC_SERVER}"
       - "LFT_LIC_ID=${LFT_LIC_ID}"
-      - "LFT_LIC_ID_VERSION=${LFT_LIC_ID_VERSION}
+      - "LFT_LIC_ID_VERSION=${LFT_LIC_ID_VERSION}"
     networks:
       demo-net:
     extra_hosts:
