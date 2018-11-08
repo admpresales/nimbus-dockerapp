@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  intellij:
+  leanft-chrome:
     image: functionaltesting/leanft-chrome:${LEANFT_CHROME_TAG}
     ports:
       - "${VNC_PORT}:5900"
@@ -35,6 +35,10 @@ services:
     extra_hosts:
       - "nimbusserver.aos.com:172.50.0.1"
       - "nimbusserver:172.50.0.1"
+
+networks:
+   demo-net:
+     external: true
 
 ---
 # This section contains the default values for your application settings.
