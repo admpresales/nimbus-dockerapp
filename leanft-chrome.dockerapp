@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 14.50
+version: "14.50"
 # Name of the application
 name: leanft-chrome
 # A short description of the application
