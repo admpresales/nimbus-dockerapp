@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  devops:
+  mc:
     image: admpresales/mc:${MC_TAG}
     ports:
     - "${MC_PORT}:8084"
