@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "18.10"
+version: "18.20"
 # Name of the application
 name: sca
 # A short description of the application
@@ -34,5 +34,5 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-SCA_TAG: "18.10"
+SCA_TAG: "18.20"
 SCA_CONTAINER_NAME: sca
