@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "2.80"
+version: "3.0"
 # Name of the application
 name: mc
 # A short description of the application
@@ -40,5 +40,5 @@ networks:
 ---
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
-MC_TAG: '2.80_di'
+MC_TAG: '3.0'
 MC_PORT: 8084
