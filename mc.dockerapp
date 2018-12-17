@@ -4,7 +4,7 @@ version: "3.0"
 # Name of the application
 name: mc
 # A short description of the application
-description: "Micro Focus Mobile Center for Nimbus Demo Platform"
+description: "Micro Focus Mobile Center for the Nimbus ADM Demo Platform"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
