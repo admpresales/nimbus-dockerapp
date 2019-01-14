@@ -26,8 +26,6 @@ services:
     - "${MC_PORT}:${MC_INTERNAL_PORT}"
     container_name: ${MC_CONTAINER_NAME}
     hostname: nimbusserver.aos.com
-    environment:
-        - FQDN
     shm_size: 2G
     networks:
         demo-net:
