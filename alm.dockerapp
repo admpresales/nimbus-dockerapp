@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "12.60"
+version: "12.61"
 # Name of the application
 name: alm
 # A short description of the application
@@ -41,7 +41,7 @@ networks:
 # This section contains the default values for your application settings.
 ALM_IMAGE: alm
 ALM_CONTAINER_NAME: alm
-ALM_TAG: '12.60_di'
+ALM_TAG: '12.61_di'
 ALM_PORT: 8082
 ALM_DB_PORT: 1521
 ALM_SHM_SIZE: 2G
