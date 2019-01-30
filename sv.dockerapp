@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "4.20"
+version: "5.0"
 # Name of the application
 name: sv
 # A short description of the application
@@ -17,32 +17,90 @@ targets:
   kubernetes: false
 
 ---
-# This section contains the Compose file that describes your application services.
 version: '3.5'
+
+volumes:
+  etc:
+  var_log:
+  var_lib:
+  var_cache:
+  db:
+
 services:
   sv-server:
     image: admpresales/sv-server:${SV_TAG}
-    ports:
-    - "${SV_SERVER_AGENT_PORTS}:${SV_SERVER_AGENT_PORTS}"
-    - "${SV_PORT}:6085"
     container_name: ${SV_SERVER_CONTAINER_NAME}
-    hostname: nimbusserver.aos.com
+    hostname: ${HOST_NAME}
     environment:
-      - "SV_SERVER_AGENT_PORTS=${SV_SERVER_AGENT_PORTS}"
-      - "SV_USER=${SV_USER}"
-      - "SV_PASSWORD=${SV_PASSWORD}"
-      - "SV_GROUPS=${SV_GROUPS}"
+      - WAIT_FOR_DB=sv-db:5432
+      - SV_SERVER_AGENT_PORTS=7000-7019
+      - SV_USER=demo
+      - SV_PASSWORD=${SV_PASSWORD}
+      - SV_GROUPS=SVM Users,SV Server Administrators
+    ports:
+      - 6085:6085 # secure REST
+      - 7000-7019:7000-7019 # SV agents
     volumes:
-      - /etc/sv-server/
-      - /var/log/sv-server/
-      - /var/lib/sv-server/
-      - /var/cache/sv-server/
+      - etc:/etc/sv-server/
+      - var_log:/var/log/sv-server/
+      - var_lib:/var/lib/sv-server/
+      - var_cache:/var/cache/sv-server/
+    stop_grace_period: 2m
+    depends_on:
+      - sv-db
     networks:
         demo-net:
           ipv4_address: 172.50.10.20
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
+  sv-lab-server:
+    image: admpresales/sv-lab-server:${SV_TAG}
+    container_name: sv-lab-server
+    hostname: ${HOST_NAME}
+    environment:
+      - SV_LAB_SERVER_CONNECTOR_PORTS=9000-9019
+    ports:
+      - 8445:8445 # secure REST
+      - 9000-9019:9000-9019 # SV connectors
+    volumes:
+      - var_log:/opt/LabServer/log/
+    stop_grace_period: 2m
+    networks:
+        demo-net:
+          ipv4_address: 172.50.10.20
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+  sv-svm:
+    image: admpresales/sv-svm:${SV_TAG}
+    container_name: sv-svm
+    hostname: ${HOST_NAME}
+    ports:
+      - 6086:6086 # secure web
+    volumes:
+      - etc:/etc/sv-server/
+      - var_log:/var/log/sv-server/
+      - var_cache:/var/cache/sv-server/
+    stop_grace_period: 2m
+    networks:
+        demo-net:
+          ipv4_address: 172.50.10.20
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+  sv-db:
+    image: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    container_name: sv-db
+    networks:
+        demo-net:
+          ipv4_address: 172.50.10.20
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+
 networks:
    demo-net:
      external: true
@@ -54,5 +112,6 @@ SV_SERVER_AGENT_PORTS: 7000-7019
 SV_USER: demo
 SV_PASSWORD: Password1
 SV_GROUPS: 'SVM Users,SV Server Administrators'
-SV_TAG: '4.20'
+SV_TAG: '5.0'
 SV_PORT: 6085
+HOST_NAME:nimbusserver.aos.com
