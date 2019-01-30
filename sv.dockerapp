@@ -43,7 +43,6 @@ services:
       - sv-db
     networks:
         demo-net:
-          ipv4_address: 172.50.10.20
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -61,7 +60,6 @@ services:
     stop_grace_period: 2m
     networks:
         demo-net:
-          ipv4_address: 172.50.10.20
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -78,7 +76,6 @@ services:
     stop_grace_period: 2m
     networks:
         demo-net:
-          ipv4_address: 172.50.10.20
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
@@ -89,7 +86,6 @@ services:
     container_name: sv-db
     networks:
         demo-net:
-          ipv4_address: 172.50.10.20
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
