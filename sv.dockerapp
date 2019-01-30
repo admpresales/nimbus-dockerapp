@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: "5.0"
+version: "12.60"
 # Name of the application
-name: sv
+name: alm
 # A short description of the application
-description: "Service Virtualization (SV) for Nimbus"
+description: "ALM .NET for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -18,13 +18,6 @@ targets:
 
 ---
 version: '3.5'
-
-volumes:
-  etc:
-  var_log:
-  var_lib:
-  var_cache:
-  db:
 
 services:
   sv-server:
@@ -101,6 +94,13 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
 
+volumes:
+  etc:
+  var_log:
+  var_lib:
+  var_cache:
+  db:
+
 networks:
    demo-net:
      external: true
@@ -114,4 +114,4 @@ SV_PASSWORD: Password1
 SV_GROUPS: 'SVM Users,SV Server Administrators'
 SV_TAG: '5.0'
 SV_PORT: 6085
-HOST_NAME:nimbusserver.aos.com
+HOST_NAME: nimbusserver.aos.com
