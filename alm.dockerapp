@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   alm:
-    image: "admpresales/${ALM_IMAGE}:${ALM_TAG}"
+    image: "${ALM_NAMESPACE}/${ALM_IMAGE}:${ALM_TAG}"
     ports:
     - "${ALM_PORT}:8080"
     - "${ALM_DB_PORT}:1521"
@@ -40,6 +40,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 ALM_IMAGE: alm
+ALM_NAMESPACE: admpresales
 ALM_CONTAINER_NAME: alm
 ALM_TAG: '12.61_di'
 ALM_PORT: 8082
