@@ -24,6 +24,7 @@ services:
     image: ${SV_NAMESPACE}/sv-server:${SV_TAG}
     container_name: ${SV_SERVER_CONTAINER_NAME}
     hostname: ${HOST_NAME}
+    tty: true
     environment:
       - WAIT_FOR_DB=sv-db:5432
       - SV_SERVER_AGENT_PORTS=7000-7019
@@ -67,6 +68,13 @@ services:
     image: ${SV_NAMESPACE}/sv-svm:${SV_TAG}
     container_name: sv-svm
     hostname: ${HOST_NAME}
+    tty: true
+    environment:
+      - WAIT_FOR_DB=sv-db:5432
+      - SV_SERVER_AGENT_PORTS=7000-7019
+      - SV_USER=demo
+      - SV_PASSWORD=${SV_PASSWORD}
+      - SV_GROUPS=SVM Users,SV Server Administrators
     ports:
       - 6086:6086 # secure web
     volumes:
