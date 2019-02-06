@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 12.60.21.98
+version: 12.60.31.92
 # Name of the application
 name: octane
 # A short description of the application
@@ -44,7 +44,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 OCTANE_IMAGE: octane
-OCTANE_TAG: 12.60.21.98_dis
+OCTANE_TAG: 12.60.31.92_dis
 OCTANE_HOST: nimbusserver.aos.com
 OCTANE_CONTAINER_NAME: octane
 INTEGRATION_BRIDGE_PORT: 9081
