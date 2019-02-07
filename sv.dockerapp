@@ -19,12 +19,6 @@ targets:
 ---
 version: '3.5'
 
-volumes:
-  work:
-  logs:
-  db:
-  lab_logs:
-
 services:
   sv-server:
     image: ${SV_NAMESPACE}/sv-server:${SV_TAG}
@@ -103,8 +97,11 @@ networks:
    demo-net:
      external: true
 
-
-
+volumes:
+  work:
+  logs:
+  db:
+  lab_logs:
 
 ---
 # This section contains the default values for your application settings.
