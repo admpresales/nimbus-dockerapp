@@ -19,27 +19,34 @@ targets:
 ---
 version: '3.5'
 
+volumes:
+  work:
+  logs:
+  db:
+  lab_logs:
+
 services:
   sv-server:
     image: ${SV_NAMESPACE}/sv-server:${SV_TAG}
-    container_name: ${SV_SERVER_CONTAINER_NAME}
+    container_name: sv-server
     hostname: ${HOST_NAME}
     tty: true
     environment:
       - WAIT_FOR_DB=sv-db:5432
       - SV_SERVER_AGENT_PORTS=7000-7019
       - SV_USER=demo
-      - SV_PASSWORD=${SV_PASSWORD}
+      - SV_PASSWORD=Password1
       - SV_GROUPS=SVM Users,SV Server Administrators
       - SV_LICENSE_SERVER_URL=https://autopass:5814
     ports:
       - 6085:6085 # secure REST
       - 7000-7019:7000-7019 # SV agents
     volumes:
-      - etc:/etc/sv-server/
-      - var_log:/var/log/sv-server/
-      - var_lib:/var/lib/sv-server/
-      - var_cache:/var/cache/sv-server/
+      - work:/sv-server/work
+      - logs:/sv-server/logs
+        # SV Agent binaries
+#      - ./some-library.so:/usr/lib/sv-server/bin/some-library.so
+#      - ./another-library.dll:/usr/lib/sv-server/bin/another-library.dll
     stop_grace_period: 2m
     depends_on:
       - sv-db
@@ -58,7 +65,7 @@ services:
       - 8445:8445 # secure REST
       - 9000-9019:9000-9019 # SV connectors
     volumes:
-      - var_log:/opt/LabServer/log/
+      - lab_logs:/opt/LabServer/log/
     stop_grace_period: 2m
     networks:
         demo-net:
@@ -70,18 +77,11 @@ services:
     container_name: sv-svm
     hostname: ${HOST_NAME}
     tty: true
-    environment:
-      - WAIT_FOR_DB=sv-db:5432
-      - SV_SERVER_AGENT_PORTS=7000-7019
-      - SV_USER=demo
-      - SV_PASSWORD=${SV_PASSWORD}
-      - SV_GROUPS=SVM Users,SV Server Administrators
     ports:
       - 6086:6086 # secure web
     volumes:
-      - etc:/etc/sv-server/
-      - var_log:/var/log/sv-server/
-      - var_cache:/var/cache/sv-server/
+      - work:/sv-server/work
+      - logs:/sv-server/logs
     stop_grace_period: 2m
     networks:
         demo-net:
@@ -109,6 +109,9 @@ volumes:
 networks:
    demo-net:
      external: true
+
+
+
 
 ---
 # This section contains the default values for your application settings.
