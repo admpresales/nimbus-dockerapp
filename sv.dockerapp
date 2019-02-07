@@ -99,13 +99,6 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
 
-volumes:
-  etc:
-  var_log:
-  var_lib:
-  var_cache:
-  db:
-
 networks:
    demo-net:
      external: true
