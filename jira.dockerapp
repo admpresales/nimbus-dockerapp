@@ -40,3 +40,4 @@ networks:
 # This section contains the default values for your application settings.
 JIRA_CONTAINER_NAME: jira
 JIRA_PORT: 8099
+JIRA_TAG: 7.6.3
