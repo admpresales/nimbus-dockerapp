@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   aos_postgres:
-    image: admpresales/aos-postgres:${POSTGRES_TAG}
+    image: admpresales/aos-postgres:${AOS_TAG}
     ports:
     - "${POSTGRES_PORT}:5432"
     environment:
@@ -89,5 +89,4 @@ PGPASSWORD: admin
 POSTGRES_IP: aos_postgres
 POSTGRES_NAME: aos_postgres
 POSTGRES_PORT: "5432"
-POSTGRES_TAG: ${AOS_TAG}
 AOS_TAG: 1.1.6
