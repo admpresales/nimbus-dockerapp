@@ -1,0 +1,44 @@
+# This section contains your application metadata.
+# Version of the application
+version: "18.20"
+# Name of the application
+name: sca
+# A short description of the application
+description: "Fortify Source Code Analyzer (SCA) Audit Workbench for Nimbus"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  sca:
+    image: admpresales/sca:${SCA_TAG}
+    container_name: ${WORKBENCH_CONTAINER_NAME}
+    environment:
+      - "DISPLAY=unix$${DISPLAY}"
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+    volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix
+    command: /bin/bash -c "/startup/startup.sh | /opt/Fortify/Fortify_SCA_and_Apps_18.20/bin/auditworkbench"
+
+networks:
+   demo-net:
+     external: true
+
+---
+# This section contains the default values for your application settings.
+SCA_TAG: "18.20"
+WORKBENCH_CONTAINER_NAME: auditworkbench
