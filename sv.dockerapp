@@ -72,7 +72,7 @@ services:
     hostname: ${HOST_NAME}
     tty: true
     ports:
-      - 6086:6086 # secure web
+      - 7086:6086 # secure web
     volumes:
       - work:/sv-server/work
       - logs:/sv-server/logs
