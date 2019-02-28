@@ -41,7 +41,7 @@ services:
     - ACCOUNT_IP
     - ACCOUNT_PORT
     - PGPASSWORD
-    - "AGENT_NAME:${ACCOUNT_AGENT_NAME}"
+    - "AGENT_NAME=${ACCOUNT_AGENT_NAME}"
     depends_on:
     - "aos_postgres"
     container_name: ${ACCOUNT_NAME}
@@ -62,7 +62,7 @@ services:
     - ACCOUNT_IP
     - ACCOUNT_PORT
     - PGPASSWORD
-    - "AGENT_NAME:${MAIN_AGENT_NAME}"
+    - "AGENT_NAME=${MAIN_AGENT_NAME}"
     depends_on:
     - "aos_accountservice"
     container_name: ${MAIN_NAME}
