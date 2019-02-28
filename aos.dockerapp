@@ -79,11 +79,11 @@ networks:
 # This section contains the default values for your application settings.
 ACCOUNT_AGENT_NAME: "aos-accountservice-dev"
 ACCOUNT_NAME: aos_accountservice
-ACCOUNT_IP: nimbusserver
+ACCOUNT_IP: nimbusserver.aos.com
 ACCOUNT_PORT: "8001"
 MAIN_AGENT_NAME: "aos-main-dev"
 MAIN_NAME: aos_main
-MAIN_IP: nimbusserver
+MAIN_IP: nimbusserver.aos.com
 MAIN_PORT: "8000"
 PGPASSWORD: admin
 POSTGRES_IP: aos_postgres
