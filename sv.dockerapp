@@ -72,7 +72,7 @@ services:
     hostname: ${HOST_NAME}
     tty: true
     ports:
-      - 7086:6086 # secure web
+      - 6086:6086 # secure web
     volumes:
       - work:/sv-server/work
       - logs:/sv-server/logs
@@ -106,7 +106,7 @@ volumes:
 ---
 # This section contains the default values for your application settings.
 SV_SERVER_CONTAINER_NAME: sv-server
-SV_SERVER_AGENT_PORTS: 6070-6088
+SV_SERVER_AGENT_PORTS: 6070-6080
 SV_USER: demo
 SV_PASSWORD: Password1
 SV_GROUPS: 'SVM Users,SV Server Administrators'
