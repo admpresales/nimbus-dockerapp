@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "1.1.6"
+version: "1.1.7"
 # Name of the application
 name: aos-qa
 # A short description of the application
@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   aos_postgres:
-    image: admpresales/aos-postgres:${POSTGRES_TAG}
+    image: admpresales/aos-postgres:${AOS_TAG}
     ports:
     - "${POSTGRES_PORT}:5432"
     environment:
@@ -30,7 +30,7 @@ services:
     networks:
         demo-net:
   aos_accountservice:
-    image: admpresales/aos-accountservice:${TAG}
+    image: admpresales/aos-accountservice:${AOS_TAG}
     ports:
     - "${ACCOUNT_PORT}:8080"
     environment:
@@ -51,7 +51,7 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
   aos_main:
-    image: admpresales/aos-main-app:${TAG}
+    image: admpresales/aos-main-app:${AOS_TAG}
     ports:
     - "${MAIN_PORT}:8080"
     environment:
@@ -90,5 +90,4 @@ PGPASSWORD: admin
 POSTGRES_IP: nimbusserver
 POSTGRES_NAME: aos_postgres_qa
 POSTGRES_PORT: "8432"
-POSTGRES_TAG: 1.1.6
-TAG: 1.1.6
+AOS_TAG: 1.1.7

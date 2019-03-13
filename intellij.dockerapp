@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 1.1.6.0
+version: 1.1.7.0
 # Name of the application
 name: intellij
 # A short description of the application
@@ -35,6 +35,6 @@ services:
 ---
 # This section contains the default values for your application settings.
 INTELLIJ_CONTAINER_NAME: intellij
-INTELLIJ_TAG: 1.1.6.0
+INTELLIJ_TAG: 1.1.7.0
 OBJECTSPY_PORT: 8824
 LEANFT_ENGINE_PORT: 5095

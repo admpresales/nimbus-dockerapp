@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "1.1.6"
+version: "1.1.7"
 # Name of the application
 name: aos
 # A short description of the application
@@ -90,4 +90,4 @@ PGPASSWORD: admin
 POSTGRES_IP: aos_postgres
 POSTGRES_NAME: aos_postgres
 POSTGRES_PORT: "5432"
-AOS_TAG: 1.1.6
+AOS_TAG: 1.1.7
