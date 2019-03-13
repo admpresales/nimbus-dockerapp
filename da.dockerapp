@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 6.2.0
+version: 6.2.1
 # Name of the application
 name: da
 # A short description of the application
@@ -37,7 +37,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-DA_TAG: 6.2.0_di
+DA_TAG: 6.2.1_di
 DA_CONTAINER_NAME: da
 DA_PORT: 8089
 DA_AGENT_PORT: 7918
