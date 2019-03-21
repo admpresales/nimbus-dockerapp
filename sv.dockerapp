@@ -110,7 +110,7 @@ SV_SERVER_AGENT_PORTS: 7000-7019
 SV_LAB_SERVER_CONNECTOR_PORTS: 9000-9019
 SV_USER: demo
 SV_PASSWORD: Password1
-SV_GROUPS: 'SVM Users,SV Server Administrators'
+SV_GROUPS: SVM Users,SV Server Administrators
 SV_TAG: '5.0'
 SV_PORT: 6085
 HOST_NAME: nimbusserver.aos.com
