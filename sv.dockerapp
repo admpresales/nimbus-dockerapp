@@ -30,14 +30,14 @@ services:
       - SV_SERVER_AGENT_PORTS=${SV_SERVER_AGENT_PORTS}
       - SV_USER=demo
       - SV_PASSWORD=Password1
-      - SV_GROUPS=${SV_GROUPS}
+      - SV_GROUPS=SVM Users,SV Server Administrators
       - SV_LICENSE_SERVER_URL=https://autopass:5814
     ports:
 #     - 6085:6085 # secure REST
       - ${SV_SERVER_AGENT_PORTS}:${SV_SERVER_AGENT_PORTS} # SV agents
     volumes:
-      - work:/sv-server/work
-      - logs:/sv-server/logs
+      - work:/opt/microfocus/sv-server/work
+      - logs:/opt/microfocus/sv-server/logs
         # SV Agent binaries
 #      - ./some-library.so:/usr/lib/sv-server/bin/some-library.so
 #      - ./another-library.dll:/usr/lib/sv-server/bin/another-library.dll
@@ -74,8 +74,8 @@ services:
     ports:
       - 6086:6086 # secure web
     volumes:
-      - work:/sv-server/work
-      - logs:/sv-server/logs
+      - work:/opt/microfocus/sv-server/work
+      - logs:/opt/microfocus/sv-server/logs
     stop_grace_period: 2m
     networks:
         demo-net:
