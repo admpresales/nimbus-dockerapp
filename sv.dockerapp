@@ -50,7 +50,7 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
   sv-lab-server:
-    image: ${SV_NAMESPACE}/sv-lab-server:${SV_TAG}
+    image: ${SV_NAMESPACE}/sv-lab-server:${SV_LAB_TAG}
     container_name: sv-lab-server
     hostname: nimbusserver.aos.com
     environment:
@@ -114,3 +114,4 @@ SV_TAG: '5.0'
 SV_PORT: 6085
 HOST_NAME: nimbusserver.aos.com
 SV_NAMESPACE: admpresales
+SV_LAB_TAG: '5.0'
