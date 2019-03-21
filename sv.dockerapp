@@ -23,7 +23,7 @@ services:
   sv-server:
     image: ${SV_NAMESPACE}/sv-server:${SV_TAG}
     container_name: sv-server
-    hostname: ${HOST_NAME}
+    hostname: nimbusserver.aos.com
     tty: true
     environment:
       - WAIT_FOR_DB=sv-db:5432
@@ -52,7 +52,7 @@ services:
   sv-lab-server:
     image: ${SV_NAMESPACE}/sv-lab-server:${SV_TAG}
     container_name: sv-lab-server
-    hostname: ${HOST_NAME}
+    hostname: nimbusserver.aos.com
     environment:
       - SV_LAB_SERVER_CONNECTOR_PORTS=9000-9019
     ports:
@@ -69,7 +69,7 @@ services:
   sv-svm:
     image: ${SV_NAMESPACE}/sv-svm:${SV_TAG}
     container_name: sv-svm
-    hostname: ${HOST_NAME}
+    hostname: nimbusserver.aos.com
     tty: true
     ports:
       - 7086:6086 # secure web
