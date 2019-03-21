@@ -30,7 +30,7 @@ services:
       - SV_SERVER_AGENT_PORTS=${SV_SERVER_AGENT_PORTS}
       - SV_USER=demo
       - SV_PASSWORD=Password1
-      - SV_GROUPS=SVM Users,SV Server Administrators
+      - SV_GROUPS='SVM Users,SV Server Administrators'
       - SV_LICENSE_SERVER_URL=https://autopass:5814
     ports:
 #     - 6085:6085 # secure REST
@@ -54,10 +54,10 @@ services:
     container_name: sv-lab-server
     hostname: nimbusserver.aos.com
     environment:
-      - SV_LAB_SERVER_CONNECTOR_PORTS=9000-9019
+      - SV_LAB_SERVER_CONNECTOR_PORTS=${SV_LAB_SERVER_CONNECTOR_PORTS}
     ports:
       - 8445:8445 # secure REST
-      - 9000-9019:9000-9019 # SV connectors
+      - ${SV_LAB_SERVER_CONNECTOR_PORTS}:${SV_LAB_SERVER_CONNECTOR_PORTS} # SV connectors
     volumes:
       - lab_logs:/opt/LabServer/log/
     stop_grace_period: 2m
@@ -72,7 +72,7 @@ services:
     hostname: nimbusserver.aos.com
     tty: true
     ports:
-      - 7086:6086 # secure web
+      - 6086:6086 # secure web
     volumes:
       - work:/sv-server/work
       - logs:/sv-server/logs
@@ -106,7 +106,8 @@ volumes:
 ---
 # This section contains the default values for your application settings.
 SV_SERVER_CONTAINER_NAME: sv-server
-SV_SERVER_AGENT_PORTS: 6070-6088
+SV_SERVER_AGENT_PORTS: 7000-7019
+SV_LAB_SERVER_CONNECTOR_PORTS: 9000-9019
 SV_USER: demo
 SV_PASSWORD: Password1
 SV_GROUPS: 'SVM Users,SV Server Administrators'
