@@ -1,0 +1,67 @@
+# This section contains your application metadata.
+# Version of the application
+version: "3.1"
+# Name of the application
+name: mc
+# A short description of the application
+description: "Micro Focus Mobile Center for the Nimbus ADM Demo Platform"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  mc:
+    image: "mobilelifecycle/mobilecenter:${MC_TAG}"
+    ports:
+        - "${MC_PORT}:${MC_INTERNAL_PORT}"
+    environment:
+        - POSTGRES_HOST=mc-db
+        - POSTGRES_PORT=5432
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=Password1
+        - FQDN=nimbusserver.aos.com
+    container_name: ${MC_CONTAINER_NAME}
+    hostname: nimbusserver.aos.com
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+  mc-db:
+    image: postgres:${POSTGRES_TAG}
+    ports:
+        - "${MC_DB_PORT}:5432"
+    environment:
+        - POSTGRES_PASSWORD=Password1
+    volumes:
+      - db:/var/lib/postgresql/data
+    container_name: mc-db
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+
+networks:
+   demo-net:
+     external: true
+
+---
+# This section contains the default values for your application settings.
+MC_CONTAINER_NAME: mc
+MC_TAG: '3.10'
+MC_PORT: 8080
+MC_INTERNAL_PORT: 8080
+POSTGRES_PORT: 5432
+POSTGRES_TAG: 9.6
+
