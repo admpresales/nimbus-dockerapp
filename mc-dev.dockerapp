@@ -43,8 +43,6 @@ services:
         - "${POSTGRES_PORT}:5432"
     environment:
         - POSTGRES_PASSWORD=Password1
-    volumes:
-      - db:/var/lib/postgresql/data
     container_name: mc-db
     networks:
         demo-net:
