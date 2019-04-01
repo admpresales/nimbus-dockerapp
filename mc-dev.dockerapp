@@ -40,7 +40,7 @@ services:
   mc-db:
     image: postgres:${POSTGRES_TAG}
     ports:
-        - "${MC_DB_PORT}:5432"
+        - "${POSTGRES_PORT}:5432"
     environment:
         - POSTGRES_PASSWORD=Password1
     volumes:
