@@ -39,8 +39,6 @@ services:
         - "nimbusserver:172.50.0.1"
   mc-db:
     image: postgres:${POSTGRES_TAG}
-    ports:
-        - "${POSTGRES_PORT}:5432"
     environment:
         - POSTGRES_PASSWORD=Password1
     container_name: mc-db
@@ -60,6 +58,5 @@ MC_CONTAINER_NAME: mc
 MC_TAG: '3.10'
 MC_PORT: 8080
 MC_INTERNAL_PORT: 8080
-POSTGRES_PORT: 5432
 POSTGRES_TAG: 9.6
 
