@@ -106,7 +106,7 @@ volumes:
 ---
 # This section contains the default values for your application settings.
 SV_SERVER_CONTAINER_NAME: sv-server
-SV_SERVER_AGENT_PORTS: 7000-7019
+SV_SERVER_AGENT_PORTS: 7001-7019
 SV_LAB_SERVER_CONNECTOR_PORTS: 9000-9019
 SV_USER: demo
 SV_PASSWORD: Password1
