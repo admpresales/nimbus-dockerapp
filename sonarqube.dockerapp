@@ -23,7 +23,7 @@ services:
   alm:
     image: "${SONARQUBE_IMAGE}:${SONARQUBE_TAG}"
     ports:
-    - "${SONARQUBE_PORT:9000"
+    - "${SONARQUBE_PORT}:9000"
     container_name: ${SONARQUBE_CONTAINER_NAME}
     hostname: sonarqube.aos.com
     networks:
