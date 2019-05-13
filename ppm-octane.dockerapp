@@ -37,21 +37,21 @@ services:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-    ppm:
-        image: admpresales/${PPM_IMAGE}:${PPM_TAG}
-        ports:
-        - "${PPM_PORT}:8080"
-        - "${PPM_DB_PORT}:1099"
-        - "${PPM_LAUNCH_PAGE_PORT}:80"
-        container_name: ${PPM_CONTAINER_NAME}
-        hostname: ppm.aos.com
-        shm_size: ${PPM_SHM_SIZE}
-        networks:
-            demo-net:
-              ipv4_address: 172.50.10.20
-        extra_hosts:
-            - "nimbusserver.aos.com:172.50.0.1"
-            - "nimbusserver:172.50.0.1"
+  ppm:
+    image: admpresales/${PPM_IMAGE}:${PPM_TAG}
+    ports:
+    - "${PPM_PORT}:8080"
+    - "${PPM_DB_PORT}:1099"
+    - "${PPM_LAUNCH_PAGE_PORT}:80"
+    container_name: ${PPM_CONTAINER_NAME}
+    hostname: ppm.aos.com
+    shm_size: ${PPM_SHM_SIZE}
+    networks:
+        demo-net:
+          ipv4_address: 172.50.10.20
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
 networks:
    demo-net:
      external: true
