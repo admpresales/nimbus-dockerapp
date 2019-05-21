@@ -1,0 +1,73 @@
+# Metadata
+version: 4.1.0-beta
+name: mfconnect
+description: "Micro Focus Connect with Start Team Server for Nimbus"
+namespace: admpresales
+
+maintainers:
+  - name: Jason Corlett
+    email: jason.corlett@microfocus.com
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+
+targets:
+  swarm: false
+  kubernetes: false
+---
+# Compose
+version: "3.5"
+
+services:
+    starteam_db:
+        container_name: ${DATABASE_CONTAINER_NAME}
+        image: "${DATABASE_IMAGE}:${DATABASE_TAG}"
+        networks:
+            demo-net:
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+    starteam:
+        container_name: ${STARTEAM_CONTAINER_NAME}
+        image: "${STARTEAM_IMAGE}:${STARTEAM_TAG}"
+        networks:
+            demo-net:
+        environment:
+            - "DISPLAY=unix$${DISPLAY}"
+        volumes:
+            - "/tmp/.X11-unix:/tmp/.X11-unix"
+        ports:
+            - "${STARTEAM_PORT}:49201"
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+    mfconnect:
+        container_name: ${MFCONNECT_CONTAINER_NAME}
+        image: "${MFCONNECT_IMAGE}:${MFCONNECT_TAG}"
+        networks:
+            demo-net:
+        ports:
+            - "${MFCONNECT_PORT}:8081"
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+
+networks:
+    demo-net:
+        external: true
+
+---
+# Default settings
+MFCONNECT_CONTAINER_NAME: "mfconnect"
+MFCONNECT_IMAGE: "admpresales/mfconnect"
+MFCONNECT_TAG: "4.1.0-beta"
+MFCONNECT_PORT: "8081"
+
+STARTEAM_CONTAINER_NAME: "starteam"
+STARTEAM_IMAGE: "admpresales/starteam"
+STARTEAM_TAG: "17.0.0.45-beta"
+STARTEAM_PORT: "49201"
+
+DATABASE_CONTAINER_NAME: "starteam_db"
+DATABASE_IMAGE: "postgres"
+DATABASE_TAG: "9.6"
+
