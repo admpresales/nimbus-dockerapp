@@ -1,0 +1,41 @@
+# Metadata
+version: "17.0.0.71-beta"
+name: starteam-cpc
+description: "Star Team Cross Platform Client"
+namespace: "admpresales"
+maintainers:
+  - name: Jason Corlett
+    email: jason.corlett@microfocus.com
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# Compose
+version: '3.5'
+services:
+  starteam-cpc:
+    image: "${CPC_IMAGE}:${CPC_TAG}"
+    container_name: "${CPC_CONTAINER_NAME}"
+    environment:
+      - "DISPLAY=unix$${DISPLAY}"
+    networks:
+      demo-net:
+    extra_hosts:
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+
+networks:
+  demo-net:
+    external: true
+
+---
+# Default settings
+CPC_TAG: "17.0.0.71-beta"
+CPC_CONTAINER_NAME: "starteam-cpc"
+CPC_IMAGE: "admpresales/starteam-cpc"
