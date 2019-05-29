@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "7.6.3"
+version: "7.13.1"
 # Name of the application
 name: jira
 # A short description of the application
@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   jira:
-    image: admpresales/jira:${JIRA_TAG}
+    image: ${JIRA_IMAGE}:${JIRA_TAG}
     ports:
       - "${JIRA_PORT}:8080"
     container_name: ${JIRA_CONTAINER_NAME}
@@ -40,4 +40,5 @@ networks:
 # This section contains the default values for your application settings.
 JIRA_CONTAINER_NAME: jira
 JIRA_PORT: 8099
-JIRA_TAG: 7.6.3
+JIRA_TAG: 7.13.1
+JIRA_IMAGE: admpresales/jira
