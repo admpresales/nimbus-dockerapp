@@ -1,0 +1,46 @@
+# This section contains your application metadata.
+# Version of the application
+version: "10.8.0"
+# Name of the application
+name: autopass
+# A short description of the application
+description: "AutoPass for Nimbus"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  autopass:
+    restart: always
+    image: admpresales/autopass:${AUTOPASS_TAG}
+    ports:
+    - "${AUTOPASS_PORT}:5814"
+    - "${HTTP_PORT}:80"
+    container_name: ${AUTOPASS_CONTAINER_NAME}
+    hostname: autopass.aos.com
+    networks:
+        demo-net:
+          ipv4_address: 172.50.10.10
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+networks:
+   demo-net:
+     external: true
+
+---
+# This section contains the default values for your application settings.
+AUTOPASS_TAG: 10.8.0
+AUTOPASS_CONTAINER_NAME: autopass-partner
+AUTOPASS_PORT: 5814
+HTTP_PORT: 5815
