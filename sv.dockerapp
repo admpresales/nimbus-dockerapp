@@ -33,7 +33,7 @@ services:
       - SV_GROUPS=SVM Users,SV Server Administrators
       - SV_LICENSE_SERVER_URL=https://autopass:5814
     ports:
-#     - 6085:6085 # secure REST
+      - 6085:6085 # secure REST
       - ${SV_SERVER_AGENT_PORTS}:${SV_SERVER_AGENT_PORTS} # SV agents
     volumes:
       - work:/opt/microfocus/sv-server/work
