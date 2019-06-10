@@ -94,5 +94,5 @@ PGPASSWORD: admin
 POSTGRES_IP: nimbusserver
 POSTGRES_NAME: aos_postgres_qa
 POSTGRES_PORT: "8432"
-POSTGRES_IMAGE: admpresales/postgres
+POSTGRES_IMAGE: admpresales/aos-postgres
 POSTGRES_TAG: 1.1.7

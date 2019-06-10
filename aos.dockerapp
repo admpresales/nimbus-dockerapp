@@ -94,5 +94,5 @@ PGPASSWORD: admin
 POSTGRES_IP: aos_postgres
 POSTGRES_NAME: aos_postgres
 POSTGRES_PORT: "5432"
-POSTGRES_IMAGE: admpresales/postgres
+POSTGRES_IMAGE: admpresales/aos-postgres
 POSTGRES_TAG: 1.1.7
