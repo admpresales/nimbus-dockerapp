@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   octane:
-    image: admpresales/${OCTANE_IMAGE}:${OCTANE_TAG}
+    image: ${OCTANE_IMAGE}:${OCTANE_TAG}
     ports:
     - "${SYNCHRONIZER_AGENT_PORT}:1099"
     - "${OCTANE_PORT}:8080"
@@ -38,7 +38,7 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
   ppm:
-    image: admpresales/${PPM_IMAGE}:${PPM_TAG}
+    image: ${PPM_IMAGE}:${PPM_TAG}
     ports:
     - "${PPM_PORT}:8080"
     - "${PPM_DB_PORT}:1099"
@@ -58,7 +58,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-OCTANE_IMAGE: octane
+OCTANE_IMAGE: admpresales/octane
 OCTANE_TAG: 12.60.21.98-ppm9.50
 OCTANE_HOST: nimbusserver.aos.com
 OCTANE_CONTAINER_NAME: octane
@@ -68,7 +68,7 @@ SYNCHRONIZER_AGENT_PORT: 1099
 SYNCHRONIZER_PORT: 9082
 OCTANE_SHM_SIZE: 2G
 PPM_CONTAINER_NAME: ppm
-PPM_IMAGE: ppm
+PPM_IMAGE: admpresales/ppm
 PPM_TAG: 9.50-octane12.60.21.98
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G

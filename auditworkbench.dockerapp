@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   sca:
-    image: admpresales/sca:${SCA_TAG}
+    image: ${SCA_IMAGE}:${SCA_TAG}
     container_name: ${WORKBENCH_CONTAINER_NAME}
     environment:
       - "DISPLAY=unix$${DISPLAY}"
@@ -42,3 +42,4 @@ networks:
 # This section contains the default values for your application settings.
 SCA_TAG: "18.20"
 WORKBENCH_CONTAINER_NAME: auditworkbench
+SCA_IMAGE: admpresales/sca

@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   da:
-    image: admpresales/da-server:${DA_TAG}
+    image: ${DA_IMAGE}:${DA_TAG}
     ports:
     - "${DA_PORT}:8080"
     - "${DA_AGENT_PORT}:7918"
@@ -38,6 +38,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 DA_TAG: 6.2.1_di
+DA_IMAGE: admpresales/da-server
 DA_CONTAINER_NAME: da
 DA_PORT: 8089
 DA_AGENT_PORT: 7918

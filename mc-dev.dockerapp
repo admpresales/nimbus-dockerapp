@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   mc:
-    image: "mobilelifecycle/mobilecenter:${MC_TAG}"
+    image: "${MC_IMAGE}:${MC_TAG}"
     ports:
         - "${MC_PORT}:${MC_INTERNAL_PORT}"
     environment:
@@ -56,6 +56,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
+MC_IMAGE: mobilelifecycle/mobilecenter
 MC_TAG: '3.10'
 MC_PORT: 8080
 MC_INTERNAL_PORT: 8080

@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   devops:
-    image: admpresales/devops:${DEVOPS_TAG}
+    image: ${DEVOPS_IMAGE}:${DEVOPS_TAG}
     ports:
     - "${JENKINS_PORT}:8080"
     - "${GIT_PORT}:80"
@@ -41,6 +41,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 DEVOPS_CONTAINER_NAME: devops
+DEVOPS_IMAGE: admpresales/devops
 DEVOPS_TAG: 1.1.7.1
 JENKINS_PORT: 8090
 JENKINS_AGENT_PORT: 50000

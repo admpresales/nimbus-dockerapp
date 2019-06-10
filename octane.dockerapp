@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   octane:
-    image: admpresales/${OCTANE_IMAGE}:${OCTANE_TAG}
+    image: ${OCTANE_IMAGE}:${OCTANE_TAG}
     ports:
     - "${SYNCHRONIZER_AGENT_PORT}:1099"
     - "${OCTANE_PORT}:8080"
@@ -43,7 +43,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-OCTANE_IMAGE: octane
+OCTANE_IMAGE: admpresales/octane
 OCTANE_TAG: 12.60.35.186_dis
 OCTANE_HOST: nimbusserver.aos.com
 OCTANE_CONTAINER_NAME: octane

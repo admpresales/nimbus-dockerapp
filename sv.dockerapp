@@ -83,7 +83,7 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
   sv-db:
-    image: postgres
+    image: ${SV_DB_IMAGE}:${SV_DB_TAG}
     volumes:
       - db:/var/lib/postgresql/data
     container_name: sv-db
@@ -116,4 +116,6 @@ SV_PASSWORD: Password1
 SV_GROUPS: SVM Users,SV Server Administrators
 SV_TAG: '5.0.1'
 SV_PORT: 6085
+SV_DB_IMAGE: postgres
+SV_DB_TAG: latest
 HOST_NAME: nimbusserver.aos.com

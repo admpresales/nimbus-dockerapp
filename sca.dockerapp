@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   sca:
-    image: admpresales/sca:${SCA_TAG}
+    image: ${SCA_IMAGE}:${SCA_TAG}
     container_name: ${SCA_CONTAINER_NAME}
     networks:
         demo-net:
@@ -36,3 +36,4 @@ networks:
 # This section contains the default values for your application settings.
 SCA_TAG: "18.20"
 SCA_CONTAINER_NAME: sca
+SCA_IMAGE: admpresales/sca

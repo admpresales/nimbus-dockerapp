@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   intellij:
-    image: admpresales/intellij:${INTELLIJ_TAG}
+    image: ${INTELLIJ_IMAGE}:${INTELLIJ_TAG}
     ports:
       - "${OBJECTSPY_PORT}:8824"
       - "${LEANFT_ENGINE_PORT}:5095"
@@ -36,5 +36,6 @@ services:
 # This section contains the default values for your application settings.
 INTELLIJ_CONTAINER_NAME: intellij
 INTELLIJ_TAG: 1.1.7.1
+INTELLIJ_IMAGE: admpresales/intellij
 OBJECTSPY_PORT: 8824
 LEANFT_ENGINE_PORT: 5095

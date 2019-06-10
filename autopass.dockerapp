@@ -22,7 +22,7 @@ version: '3.5'
 services:
   autopass:
     restart: always
-    image: admpresales/autopass:${AUTOPASS_TAG}
+    image: ${AUTOPASS_IMAGE}:${AUTOPASS_TAG}
     ports:
     - "${AUTOPASS_PORT}:5814"
     - "${HTTP_PORT}:80"
@@ -41,6 +41,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 AUTOPASS_TAG: 10.8.0_d
+AUTOPASS_IMAGE: admpresales/autopass
 AUTOPASS_CONTAINER_NAME: autopass
 AUTOPASS_PORT: 5814
 HTTP_PORT: 5815

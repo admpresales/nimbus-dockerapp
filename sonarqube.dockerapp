@@ -37,8 +37,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-SONARQUBE_IMAGE: sonarqube
-SONARQUBE_NAMESPACE: admpresales
+SONARQUBE_IMAGE: admpresales/sonarqube
 SONARQUBE_CONTAINER_NAME: sonarqube
 SONARQUBE_TAG: '7.7-community'
 SONARQUBE_PORT: 8020

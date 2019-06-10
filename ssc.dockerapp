@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   ssc:
-    image: admpresales/ssc:${SSC_TAG}
+    image: ${SSC_IMAGE}:${SSC_TAG}
     container_name: ${SSC_CONTAINER_NAME}
     ports:
       - "${SSC_PORT}:8080"
@@ -31,7 +31,7 @@ services:
       - "nimbusserver.aos.com:172.50.0.1"
       - "nimbusserver:172.50.0.1"
   ssc_db:
-    image: admpresales/ssc-mysql:${DB_TAG}
+    image: ${DB_IMAGE}:${DB_TAG}
     container_name: ssc_db
     command: --default-authentication-plugin=mysql_native_password
     environment:
@@ -53,4 +53,6 @@ DB_TAG: "18.10-empty"
 SSC_PORT: 8086
 SSC_CONTAINER_NAME: ssc
 DB_CONTAINER_NAME: ssc_db
+SSC_IMAGE: admpresales/ssc
+DB_IMAGE: admpresales/ssc-mysql
 MYSQL_ROOT_PASSWORD: Password1
