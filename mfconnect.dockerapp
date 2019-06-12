@@ -1,5 +1,5 @@
 # Metadata
-version: 4.1.0-beta
+version: 4.1.0-beta2
 name: mfconnect
 description: "Micro Focus Connect with Start Team Server for Nimbus"
 namespace: admpresales
@@ -64,7 +64,7 @@ MFCONNECT_PORT: "8081"
 
 STARTEAM_CONTAINER_NAME: "starteam"
 STARTEAM_IMAGE: "admpresales/starteam"
-STARTEAM_TAG: "17.0.0.45-beta"
+STARTEAM_TAG: "17.0.0.45-beta2_hub"
 STARTEAM_PORT: "49201"
 
 DATABASE_CONTAINER_NAME: "starteam_db"
