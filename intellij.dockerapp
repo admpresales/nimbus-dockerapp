@@ -21,6 +21,7 @@ targets:
 version: '3.5'
 services:
   intellij:
+    privileged: true
     image: ${INTELLIJ_IMAGE}:${INTELLIJ_TAG}
     ports:
       - "${OBJECTSPY_PORT}:8824"
