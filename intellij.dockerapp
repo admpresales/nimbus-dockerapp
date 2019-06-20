@@ -29,19 +29,9 @@ services:
     container_name: ${INTELLIJ_CONTAINER_NAME}
     environment:
       - "DISPLAY=unix$${DISPLAY}"
-    networks:
-      demo-net:
+    network_mode: "host"
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-    extra_hosts:
-      - "nimbusserver.aos.com:172.50.0.1"
-      - "nimbusserver:172.50.0.1"
-      - "google-analytics.com:0.0.0.0"
-      - "www.google-analytics.com:0.0.0.0"
-
-networks:
-   demo-net:
-     external: true
 
 ---
 # This section contains the default values for your application settings.
