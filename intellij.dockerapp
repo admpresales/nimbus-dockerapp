@@ -36,6 +36,8 @@ services:
     extra_hosts:
       - "nimbusserver.aos.com:172.50.0.1"
       - "nimbusserver:172.50.0.1"
+      - "google-analytics.com:0.0.0.0"
+      - "www.google-analytics.com:0.0.0.0"
 
 networks:
    demo-net:
