@@ -1,0 +1,41 @@
+# Metadata
+version: "1.5.10"
+name: mailserver
+description: "Email server for Nimbus Platform"
+namespace: "admpresales"
+maintainers:
+  - name: Jason Corlett
+    email: jason.corlett@microfocus.com
+
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# Compose
+version: '3.5'
+services:
+  mailserver:
+    image: "${MAIL_IMAGE}:${MAIL_TAG}"
+    container_name: "${MAIL_CONTAINER_NAME}"
+    networks:
+      demo-net:
+    extra_hosts:
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
+    ports:
+      - "${SMTP_PORT}:3025"
+      - "${IMAP_PORT}:3143"
+
+networks:
+  demo-net:
+    external: true
+
+---
+# Default settings
+MAIL_TAG: "1.5.10"
+MAIL_CONTAINER_NAME: "mailserver"
+MAIL_IMAGE: "greenmail/standalone"
+
+SMTP_PORT: 3025
+IMAP_PORT: 3143
