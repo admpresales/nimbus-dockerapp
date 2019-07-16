@@ -52,7 +52,7 @@ MAIL_IMAGE: "greenmail/standalone"
 SMTP_PORT: 3025
 IMAP_PORT: 3143
 
-WEBMAIL_TAG: "1.13.0"
+WEBMAIL_TAG: "1.3.9"
 WEBMAIL_CONTAINER_NAME: "webmail"
 WEBMAIL_IMAGE: "admpresales/webmail"
 
