@@ -18,6 +18,7 @@ services:
   mailserver:
     image: "${MAIL_IMAGE}:${MAIL_TAG}"
     container_name: "${MAIL_CONTAINER_NAME}"
+    restart: "$RESTART"
     networks:
       demo-net:
     extra_hosts:
@@ -26,6 +27,17 @@ services:
     ports:
       - "${SMTP_PORT}:3025"
       - "${IMAP_PORT}:3143"
+  webmail:
+    image: "${WEBMAIL_IMAGE}:${WEBMAIL_TAG}"
+    container_name: "${WEBMAIL_CONTAINER_NAME}"
+    restart: "$RESTART"
+    networks:
+      demo-net:
+    extra_hosts:
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
+    ports:
+      - "${WEBMAIL_PORT}:80"
 
 networks:
   demo-net:
@@ -39,3 +51,11 @@ MAIL_IMAGE: "greenmail/standalone"
 
 SMTP_PORT: 3025
 IMAP_PORT: 3143
+
+WEBMAIL_TAG: "1.3.9"
+WEBMAIL_CONTAINER_NAME: "webmail"
+WEBMAIL_IMAGE: "admpresales/webmail"
+
+WEBMAIL_PORT: 8143
+
+RESTART: "no"
