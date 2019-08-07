@@ -118,5 +118,5 @@ SV_TAG: '5.0.1'
 SV_PORT: 6085
 SV_DB_IMAGE: postgres
 SV_DB_TAG: latest
-SV_LICENSE_SERVER_URL=https://nimbusserver.aos.com:5814
+SV_LICENSE_SERVER_URL="https://nimbusserver.aos.com:5814"
 HOST_NAME: nimbusserver.aos.com
