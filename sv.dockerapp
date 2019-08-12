@@ -1,8 +1,8 @@
 # This section contains your application metadata.
 # Version of the application
-version: "5.0.1"
+version: "5.1"
 # Name of the application
-name: alm
+name: sv
 # A short description of the application
 description: "Service Virtualization (SV) for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
@@ -114,7 +114,7 @@ SV_SVM_IMAGE: admpresales/sv-svm
 SV_USER: demo
 SV_PASSWORD: Password1
 SV_GROUPS: SVM Users,SV Server Administrators
-SV_TAG: '5.0.1'
+SV_TAG: '5.1'
 SV_PORT: 6085
 SV_DB_IMAGE: postgres
 SV_DB_TAG: latest
