@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "3.1.2"
+version: "3.2"
 # Name of the application
 name: mc
 # A short description of the application
@@ -40,7 +40,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
-MC_TAG: '3.1.2_di'
+MC_TAG: '3.2_di'
 MC_PORT: 8084
 MC_INTERNAL_PORT: 8084
 MC_IMAGE: admpresales/mc
