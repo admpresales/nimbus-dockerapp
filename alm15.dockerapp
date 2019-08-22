@@ -1,0 +1,47 @@
+# This section contains your application metadata.
+# Version of the application
+version: "15.00"
+# Name of the application
+name: alm
+# A short description of the application
+description: "ALM .NET for Nimbus"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  alm:
+    image: "${ALM_IMAGE}:${ALM_TAG}"
+    ports:
+    - "${ALM_PORT}:8080"
+    - "${ALM_DB_PORT}:1433"
+    container_name: ${ALM_CONTAINER_NAME}
+    hostname: alm.aos.com
+    shm_size: ${ALM_SHM_SIZE}
+    networks:
+        demo-net:
+    extra_hosts:
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+networks:
+   demo-net:
+     external: true
+
+---
+# This section contains the default values for your application settings.
+ALM_IMAGE: admpresales/alm
+ALM_CONTAINER_NAME: alm15
+ALM_TAG: '15.0'
+ALM_PORT: 8082
+ALM_DB_PORT: 1433
+ALM_SHM_SIZE: 2G
