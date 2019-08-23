@@ -28,6 +28,7 @@ services:
     container_name: ${ALM_CONTAINER_NAME}
     hostname: alm.aos.com
     shm_size: ${ALM_SHM_SIZE}
+    command: tail -f /dev/null
     networks:
         demo-net:
     extra_hosts:
