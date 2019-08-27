@@ -32,6 +32,8 @@ services:
         - FQDN=nimbusserver.aos.com
     container_name: ${MC_CONTAINER_NAME}
     hostname: nimbusserver.aos.com
+    volumes:
+      - mc_data:/opt/mc/mcStorage
     networks:
         demo-net:
     extra_hosts:
@@ -52,6 +54,9 @@ services:
 networks:
    demo-net:
      external: true
+
+volumes:
+  mc_data:
 
 ---
 # This section contains the default values for your application settings.
