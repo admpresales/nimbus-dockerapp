@@ -40,7 +40,7 @@ networks:
      external: true
 
 volumes:
-  work:
+  mc_data:
 ---
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
