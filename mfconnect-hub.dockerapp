@@ -1,0 +1,109 @@
+# Metadata
+version: 4.1.0
+name: mfconnect-hub
+description: "Micro Focus Connect with Start Team Server for Nimbus"
+namespace: admpresales
+
+maintainers:
+  - name: Jason Corlett
+    email: jason.corlett@microfocus.com
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+
+targets:
+  swarm: false
+  kubernetes: false
+---
+# Compose
+version: "3.5"
+
+services:
+    starteam_db:
+        container_name: ${DATABASE_CONTAINER_NAME}
+        image: "${DATABASE_IMAGE}:${DATABASE_TAG}"
+        networks:
+            demo-net:
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+    starteam:
+        container_name: ${STARTEAM_CONTAINER_NAME}
+        image: "${STARTEAM_IMAGE}:${STARTEAM_TAG}"
+        networks:
+            demo-net:
+        environment:
+            - "DISPLAY=unix$${DISPLAY}"
+        volumes:
+            - "/tmp/.X11-unix:/tmp/.X11-unix"
+        ports:
+            - "${STARTEAM_PORT}:49201"
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+    mfconnect:
+        container_name: ${MFCONNECT_CONTAINER_NAME}
+        image: "${MFCONNECT_IMAGE}:${MFCONNECT_TAG}"
+        networks:
+            demo-net:
+        ports:
+            - "${MFCONNECT_PORT}:8081"
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+        environment:
+            - MFCONNECT_SETUP
+            - MFCONNECT_PORT
+            - STARTEAM_CONTAINER_NAME
+            - STARTEAM_PORT
+            - STARTEAM_URL
+            - OCTANE_URL
+            - OCTANE_ID
+            - OCTANE_SECRET
+            - OCTANE_SHAREDSPACE
+            - OCTANE_WORKSPACE
+            - OCTANE_RELEASE
+            - JIRA_URL
+            - JIRA_USER
+            - JIRA_PASSWORD
+            - JIRA_PROJECT
+            - JIRA_BOARD
+
+networks:
+    demo-net:
+        external: true
+
+---
+# Default settings
+# Connect Container Setup
+MFCONNECT_CONTAINER_NAME: "mfconnect"
+MFCONNECT_IMAGE: "admpresales/mfconnect"
+MFCONNECT_TAG: "4.1.0"
+MFCONNECT_PORT: "8081"
+MFCONNECT_SETUP: "yes"
+
+# Starteam Container
+STARTEAM_CONTAINER_NAME: "starteam"
+STARTEAM_IMAGE: "admpresales/starteam"
+STARTEAM_TAG: "17.0.0.45-beta3"
+STARTEAM_PORT: "49201"
+STARTEAM_URL: ""
+
+# Postgres Database for Starteam
+DATABASE_CONTAINER_NAME: "starteam_db"
+DATABASE_IMAGE: "postgres"
+DATABASE_TAG: "9.6"
+
+# Octane Data Source
+OCTANE_URL: "http://nimbusserver.aos.com:8085"
+OCTANE_ID: "ppm_o8km7151go98ptxkd88drvjq3"
+OCTANE_SECRET: "=73eb49a4f85f725cN"
+OCTANE_SHAREDSPACE: "1001"
+OCTANE_WORKSPACE: "1002"
+OCTANE_RELEASE: "1002"
+
+# Jira Data Source
+JIRA_URL: "http://nimbusserver.aos.com:8099"
+JIRA_USER: "demo"
+JIRA_PASSWORD: "Password1"
+JIRA_PROJECT: "AOS"
+JIRA_BOARD: ""
