@@ -27,8 +27,6 @@ services:
     container_name: ${MC_CONTAINER_NAME}
     hostname: nimbusserver.aos.com
     shm_size: 2G
-    volumes:
-      - mc_data:/opt/mc/mcStorage
     networks:
         demo-net:
     extra_hosts:
