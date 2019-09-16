@@ -37,8 +37,6 @@ networks:
    demo-net:
      external: true
 
-volumes:
-  mc_data:
 ---
 # This section contains the default values for your application settings.
 MC_CONTAINER_NAME: mc
