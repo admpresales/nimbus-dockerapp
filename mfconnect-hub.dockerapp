@@ -1,5 +1,5 @@
 # Metadata
-version: 4.2
+version: "4.2"
 name: mfconnect-hub
 description: "Micro Focus Connect with Start Team Server for Nimbus"
 namespace: admpresales
