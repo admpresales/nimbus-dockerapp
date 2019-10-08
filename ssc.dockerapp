@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "18.10"
+version: "19.1.0"
 # Name of the application
 name: ssc
 # A short description of the application
@@ -25,20 +25,9 @@ services:
     container_name: ${SSC_CONTAINER_NAME}
     ports:
       - "${SSC_PORT}:8080"
+      - "${SSC_DB_PORT}:1433"
     networks:
         demo-net:
-    extra_hosts:
-      - "nimbusserver.aos.com:172.50.0.1"
-      - "nimbusserver:172.50.0.1"
-  ssc_db:
-    image: ${DB_IMAGE}:${DB_TAG}
-    container_name: ssc_db
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ssc_db
-    networks:
-      demo-net:
     extra_hosts:
       - "nimbusserver.aos.com:172.50.0.1"
       - "nimbusserver:172.50.0.1"
@@ -48,11 +37,9 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-SSC_TAG: "18.10"
-DB_TAG: "18.10-empty"
+SSC_TAG: "19.1.0"
 SSC_PORT: 8086
+SSC_DB_PORT: 1435
 SSC_CONTAINER_NAME: ssc
-DB_CONTAINER_NAME: ssc_db
 SSC_IMAGE: admpresales/ssc
-DB_IMAGE: admpresales/ssc-mysql
 MYSQL_ROOT_PASSWORD: Password1
