@@ -14,7 +14,7 @@ targets:
 version: '3.7'
 
 services:
-  dmcm:
+  dimcm:
     image: "${CM_IMAGE}:${CM_TAG}"
     container_name: "${CM_CONTAINER_NAME}"
     ports:
@@ -51,10 +51,10 @@ networks:
 ---
 CM_CONTAINER_NAME: "dimcm"
 CM_TAG: "14.5.1"
-CM_IMAGE: "admpresales/dmcm"
+CM_IMAGE: "admpresales/dimcm"
 CM_PORT: 671
 CM_WEB_PORT: 8060
 
 DB_CONTAINER_NAME: "dimcm_db"
 DB_TAG: "14.5.1"
-DB_IMAGE: "admpresales/dmcm_db"
+DB_IMAGE: "admpresales/dimcm_db"
