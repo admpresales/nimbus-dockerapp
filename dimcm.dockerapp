@@ -1,0 +1,60 @@
+name: "dimcm"
+description: "Dimensions CM for Nimbus"
+namespace: "admpresales"
+version: "14.5.1"
+
+maintainers:
+  - name: Jason Corlett
+    email: jason.corlett@microfocus.com
+
+targets:
+  swarm: false
+  kubernetes: false
+---
+version: '3.7'
+
+services:
+  dimcm:
+    image: "${CM_IMAGE}:${CM_TAG}"
+    container_name: "${CM_CONTAINER_NAME}"
+    ports:
+      - "${CM_PORT}:671"
+      - "${CM_WEB_PORT}:8080"
+    networks:
+      demo-net: ~
+    depends_on:
+      - "db"
+    extra_hosts:
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
+
+
+  db:
+    image: "${DB_IMAGE}:${DB_TAG}"
+    container_name: "${DB_CONTAINER_NAME}"
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: postgres
+      POSTGRES_PORT: 5432
+      CM_DB_DATADIR: /tmp/cm_db_dim14
+    networks:
+      demo-net: ~
+    extra_hosts:
+      - "nimbusserver.aos.com:172.50.0.1"
+      - "nimbusserver:172.50.0.1"
+
+
+networks:
+  demo-net:
+    external: true
+
+---
+CM_CONTAINER_NAME: "dimcm"
+CM_TAG: "14.5.1"
+CM_IMAGE: "admpresales/dimcm"
+CM_PORT: 671
+CM_WEB_PORT: 8060
+
+DB_CONTAINER_NAME: "dimcm_db"
+DB_TAG: "14.5.1"
+DB_IMAGE: "admpresales/dimcm_db"
