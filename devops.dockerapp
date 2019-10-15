@@ -28,6 +28,8 @@ services:
     - "${JENKINS_AGENT_PORT}:50000"
     - "${SSH_PORT}:22"
     container_name: ${DEVOPS_CONTAINER_NAME}
+    environment:
+      - OCTANE_URL
     networks:
         demo-net:
           ipv4_address: ${DEVOPS_IP}
@@ -43,6 +45,7 @@ networks:
 DEVOPS_CONTAINER_NAME: devops
 DEVOPS_IMAGE: admpresales/devops
 DEVOPS_TAG: 1.1.7.3
+OCTANE_URL: http://nimbusserver.aos.com:8085
 JENKINS_PORT: 8090
 JENKINS_AGENT_PORT: 50000
 GIT_PORT: 8091
