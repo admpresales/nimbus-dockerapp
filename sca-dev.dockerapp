@@ -31,7 +31,7 @@ services:
     volumes:
         - fortify:/opt/Fortify
   devtools:
-    image: ${SCA_IMAGE}:${SCA_TAG}
+    image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
     networks:
         demo-net:
@@ -55,6 +55,6 @@ volumes:
 SCA_TAG: "19.1.2"
 SCA_CONTAINER_NAME: sca
 SCA_IMAGE: admpresales/sca
-DEVTOOLS_CONTAINER_NAME: sca
+DEVTOOLS_CONTAINER_NAME: sca-devtools
 DEVTOOLS_IMAGE: admpresales/devtools
 DEVTOOLS_TAG: "2.0"
