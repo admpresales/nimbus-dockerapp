@@ -33,6 +33,7 @@ services:
   devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
+    command: tail -f /dev/null
     networks:
         demo-net:
     extra_hosts:
