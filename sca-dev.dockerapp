@@ -35,13 +35,14 @@ services:
     container_name: ${DEVTOOLS_CONTAINER_NAME}
     networks:
         demo-net:
-    extra_hosts
+    extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
     depends_on:
         - sca
     volumes:
         - fortify:/opt/Fortify
+
 networks:
    demo-net:
      external: true
