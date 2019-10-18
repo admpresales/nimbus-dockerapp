@@ -4,7 +4,7 @@ version: "19.1.2"
 # Name of the application
 name: sca
 # A short description of the application
-description: "Fortify Source Code Analyzer (SCA) for Nimbus with DevTools"
+description: "Fortify Source Code Analyzer (SCA) for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
