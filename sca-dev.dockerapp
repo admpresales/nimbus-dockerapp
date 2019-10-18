@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: "3.2"
+version: "19.1.2"
 # Name of the application
-name: mc
+name: sca
 # A short description of the application
-description: "Micro Focus Mobile Center for the Nimbus ADM Demo Platform"
+description: "Fortify Source Code Analyzer (SCA) for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -20,28 +20,40 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  mc:
-    image: "${MC_IMAGE}:${MC_TAG}"
-    ports:
-    - "${MC_PORT}:${MC_INTERNAL_PORT}"
-    container_name: ${MC_CONTAINER_NAME}
-    hostname: nimbusserver.aos.com
-    shm_size: 2G
+  sca:
+    image: ${SCA_IMAGE}:${SCA_TAG}
+    container_name: ${SCA_CONTAINER_NAME}
     networks:
         demo-net:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-
+    volumes:
+        - fortify:/opt/Fortify
+  devtools:
+    image: ${SCA_IMAGE}:${SCA_TAG}
+    container_name: ${DEVTOOLS_CONTAINER_NAME}
+    networks:
+        demo-net:
+    extra_hosts
+        - "nimbusserver.aos.com:172.50.0.1"
+        - "nimbusserver:172.50.0.1"
+    depends_on:
+        - sca
+    volumes:
+        - fortify:/opt/Fortify
 networks:
    demo-net:
      external: true
 
+volumes:
+    fortify:
+
 ---
 # This section contains the default values for your application settings.
-MC_CONTAINER_NAME: mc
-MC_TAG: '3.2_di'
-MC_PORT: 8084
-MC_INTERNAL_PORT: 8084
-MC_IMAGE: admpresales/mc-test
-
+SCA_TAG: "19.1.2"
+SCA_CONTAINER_NAME: sca
+SCA_IMAGE: admpresales/sca
+DEVTOOLS_CONTAINER_NAME: sca
+DEVTOOLS_IMAGE: admpresales/devtools
+DEVTOOLS_TAG: "2.0"
