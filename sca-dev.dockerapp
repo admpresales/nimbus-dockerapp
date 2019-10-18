@@ -33,9 +33,7 @@ services:
   devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
-    command: ln -s ${SCA_HOME}/bin/sourceanalyzer /usr/sbin/sourceanalyzer && tail -f /dev/null
-    environment:
-        - SCA_HOME:/opt/Fortify/Fortify_SCA_and_Apps_${SCA_TAG}
+    command: ln -s /opt/Fortify/Fortify_SCA_and_Apps_${SCA_TAG}/bin/sourceanalyzer /usr/sbin/sourceanalyzer && tail -f /dev/null
     networks:
         demo-net:
     extra_hosts:
