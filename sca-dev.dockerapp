@@ -33,7 +33,7 @@ services:
   devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
-    command: ["ln","-s","/opt/Fortify/Fortify_SCA_and_Apps_19.1.2/bin/sourceanalyzer","/usr/sbin/sourceanalyzer",";","tail","-f","/dev/null"]
+    command: ["ln","-s","/opt/Fortify/Fortify_SCA_and_Apps_19.1.2/bin/sourceanalyzer","/usr/sbin/sourceanalyzer",'";"',"tail","-f","/dev/null"]
     networks:
         demo-net:
     extra_hosts:
