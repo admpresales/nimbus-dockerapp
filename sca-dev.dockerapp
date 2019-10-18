@@ -35,12 +35,12 @@ services:
     container_name: ${DEVTOOLS_CONTAINER_NAME}
     command:
         - ln
-        - -s
+        - "-s"
         - /opt/Fortify/Fortify_SCA_and_Apps_19.1.2/bin/sourceanalyzer
         - /usr/sbin/sourceanalyzer
         - "&&"
         - tail
-        - -f
+        - "-f"
         - /dev/null
     networks:
         demo-net:
