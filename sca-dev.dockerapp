@@ -38,10 +38,10 @@ services:
         - -s
         - /opt/Fortify/Fortify_SCA_and_Apps_19.1.2/bin/sourceanalyzer
         - /usr/sbin/sourceanalyzer
-        - &&
+        - '&&'
         - tail
-        - f
-        -/dev/null
+        - -f
+        - /dev/null
     networks:
         demo-net:
     extra_hosts:
