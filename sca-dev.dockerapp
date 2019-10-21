@@ -31,7 +31,7 @@ services:
     depends_on:
         - devtools
     environment:
-        - ADDITIONAL_LD_LIBRARY_PATH=/sca/lib
+        - LD_LIBRARY_PATH=/sca/lib
     volumes:
         - lib:/sca/lib
   devtools:
