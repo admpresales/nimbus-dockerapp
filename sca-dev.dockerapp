@@ -28,28 +28,30 @@ services:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
+    depends_on:
+        - devtools
+    environment:
+        - LD_LIBRARY_PATH=/sca/lib:$${LD_LIBRARY_PATH)
     volumes:
-        - fortify:/opt/Fortify
+        - lib:/sca/lib
   devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
-    command: bash -c "ln -s /opt/Fortify/Fortify_SCA_and_Apps_19.1.2/bin/sourceanalyzer /usr/bin/sourceanalyzer && tail -f /dev/null"
+    command: bash -c "tail -f /dev/null"
     networks:
         demo-net:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-    depends_on:
-        - sca
     volumes:
-        - fortify:/opt/Fortify
+        - lib:/usr/lib
 
 networks:
    demo-net:
      external: true
 
 volumes:
-    fortify:
+    lib:
 
 ---
 # This section contains the default values for your application settings.
