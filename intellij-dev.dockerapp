@@ -51,7 +51,7 @@ services:
         - "nimbusserver:172.50.0.1"
     volumes:
         - /sca:/opt/Fortify/Fortify_SCA_and_Apps_19.1.2
-  devtools-intellij:
+  devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
     command: bash -c "tail -f /dev/null"
