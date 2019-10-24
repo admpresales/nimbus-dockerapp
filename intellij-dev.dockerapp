@@ -41,6 +41,7 @@ services:
         - /tmp/.X11-unix:/tmp/.X11-unix
         - sca:/sca
         - devtools:/devtools
+        - sca-plugin:/opt/intellij/plugins/FortifyAnalysis
   sca:
     image: ${SCA_IMAGE}:${SCA_TAG}
     container_name: ${SCA_CONTAINER_NAME}
@@ -51,6 +52,7 @@ services:
         - "nimbusserver:172.50.0.1"
     volumes:
         - sca:/opt/Fortify/Fortify_SCA_and_Apps_19.1.2
+        - sca-plugin:/intellij-plugin/FortifyAnalysis
   devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
@@ -69,6 +71,7 @@ networks:
 
 volumes:
     sca:
+    sca-plugin:
     devtools:
 
 ---
