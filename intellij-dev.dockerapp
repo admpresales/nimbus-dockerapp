@@ -36,6 +36,7 @@ services:
         - "LFT_LIC_ID_VERSION=${LFT_LIC_ID_VERSION}"
         - "LFT_LIC_SERVER=${LFT_LIC_SERVER}"
         - LD_LIBRARY_PATH=/devtools
+        - SCA_VERSION=${SCA_TAG}
       network_mode: "host"
       volumes:
         - /tmp/.X11-unix:/tmp/.X11-unix
