@@ -51,7 +51,7 @@ services:
         - "nimbusserver:172.50.0.1"
     volumes:
         - /sca:/opt/Fortify/Fortify_SCA_and_Apps_19.1.2
-  devtools:
+  devtools-intellij:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
     command: bash -c "tail -f /dev/null"
@@ -74,8 +74,8 @@ volumes:
 ---
 # This section contains the default values for your application settings.
 SCA_TAG: "19.1.2"
-SCA_CONTAINER_NAME: sca
+SCA_CONTAINER_NAME: intellij-sca
 SCA_IMAGE: admpresales/sca
-DEVTOOLS_CONTAINER_NAME: sca-devtools
+DEVTOOLS_CONTAINER_NAME: intellij-devtools
 DEVTOOLS_IMAGE: admpresales/devtools
 DEVTOOLS_TAG: "2.0"
