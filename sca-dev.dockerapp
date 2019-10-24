@@ -31,9 +31,9 @@ services:
     depends_on:
         - devtools
     environment:
-        - LD_LIBRARY_PATH=/sca/lib
+        - LD_LIBRARY_PATH=/devtools
     volumes:
-        - lib:/sca/lib
+        - devtools:/devtools
   devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
@@ -44,14 +44,14 @@ services:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
     volumes:
-        - lib:/usr/lib
+        - devtools:/usr/lib
 
 networks:
    demo-net:
      external: true
 
 volumes:
-    lib:
+    devtools:
 
 ---
 # This section contains the default values for your application settings.
