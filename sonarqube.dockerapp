@@ -1,17 +1,12 @@
-# This section contains your application metadata.
-# Version of the application
 version: "7.7"
-# Name of the application
-name: alm
-# A short description of the application
-description: "ALM .NET for Nimbus"
-# Namespace to use when pushing to a registry. This is typically your Hub username.
+name: sonarqube
+description: "Sonarqube Docker Application for Nimbus - based on community image"
 namespace: "admpresales"
-# List of application maitainers with name and email for each
+
 maintainers:
   - name: Jason Hrabi
     email: jason.hrabi@microfocus.com
-# Specify false here if your application doesn't support Swarm or Kubernetes
+
 targets:
   swarm: false
   kubernetes: false
@@ -20,7 +15,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  alm:
+  sonarqube:
     image: "${SONARQUBE_IMAGE}:${SONARQUBE_TAG}"
     ports:
     - "${SONARQUBE_PORT}:9000"
@@ -37,7 +32,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-SONARQUBE_IMAGE: admpresales/sonarqube
+SONARQUBE_IMAGE: sonarqube
 SONARQUBE_CONTAINER_NAME: sonarqube
 SONARQUBE_TAG: '7.7-community'
 SONARQUBE_PORT: 8020
