@@ -60,7 +60,7 @@ services:
     - MAIN_IP
     - MAIN_PORT
     - ACCOUNT_IP
-    - ACCOUNT_PORT=${ACCOUNT_PORT_ON_MAIN"}
+    - "ACCOUNT_PORT=${ACCOUNT_PORT_ON_MAIN}"
     - PGPASSWORD
     - "AGENT_NAME=${MAIN_AGENT_NAME}"
     depends_on:
