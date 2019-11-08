@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  aos_postgres:
+  aos-postgres:
     image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
     ports:
     - "${POSTGRES_PORT}:5432"
@@ -29,7 +29,7 @@ services:
     container_name: ${POSTGRES_NAME}
     networks:
         demo-net:
-  aos_accountservice:
+  aos-accountservice:
     image: ${ACCOUNT_IMAGE}:${ACCOUNT_TAG}
     ports:
     - "${ACCOUNT_PORT}:8080"
@@ -50,7 +50,7 @@ services:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-  aos_main:
+  aos-main:
     image: ${MAIN_IMAGE}:${MAIN_TAG}
     ports:
     - "${MAIN_PORT}:8080"
