@@ -43,7 +43,7 @@ services:
     - PGPASSWORD
     - "AGENT_NAME=${ACCOUNT_AGENT_NAME}"
     depends_on:
-    - "aos_postgres"
+    - "aos-postgres"
     container_name: ${ACCOUNT_NAME}
     networks:
         demo-net:
@@ -64,7 +64,7 @@ services:
     - PGPASSWORD
     - "AGENT_NAME=${MAIN_AGENT_NAME}"
     depends_on:
-    - "aos_accountservice"
+    - "aos-accountservice"
     container_name: ${MAIN_NAME}
     networks:
         demo-net:
