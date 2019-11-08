@@ -23,6 +23,7 @@ services:
   sca:
     image: ${SCA_IMAGE}:${SCA_TAG}
     container_name: ${SCA_CONTAINER_NAME}
+    command: bash -c "tail -f /dev/null"
     networks:
         demo-net:
     extra_hosts:
