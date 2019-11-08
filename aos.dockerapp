@@ -4,7 +4,7 @@ version: "2.1-beta"
 # Name of the application
 name: aos
 # A short description of the application
-description: "Advantage Online Shopping"
+description: "Advantage Online Shopping Beta"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
