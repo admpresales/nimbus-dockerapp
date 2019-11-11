@@ -60,7 +60,7 @@ services:
     - MAIN_IP
     - MAIN_PORT
     - ACCOUNT_IP
-    - ACCOUNT_PORT
+    - "ACCOUNT_PORT=${ACCOUNT_PORT_ON_MAIN}"
     - PGPASSWORD
     - "AGENT_NAME=${MAIN_AGENT_NAME}"
     depends_on:
@@ -84,6 +84,7 @@ ACCOUNT_IP: nimbusserver
 ACCOUNT_PORT: "8401"
 ACCOUNT_IMAGE: admpresales/aos-accountservice
 ACCOUNT_TAG: 1.1.7
+ACCOUNT_PORT_ON_MAIN: "8001"
 MAIN_AGENT_NAME: "aos-main-qa"
 MAIN_NAME: aos_main_qa
 MAIN_IP: nimbusserver
