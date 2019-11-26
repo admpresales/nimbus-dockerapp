@@ -39,8 +39,10 @@ pipeline {
                     docker login -u jhrabi -p "6NgybC&1qxE&qh#5MnL44vxt"
     
                     for i in ${CHANGED}; do
-                        docker-app validate ${i}
-                        docker-app push ${i}
+                        if [ $i != "Jenkinsfile" ]; then
+                            docker-app validate ${i}
+                            docker-app push ${i}
+                        fi
                     done
                 """
             }

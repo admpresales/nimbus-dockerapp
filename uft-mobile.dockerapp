@@ -21,10 +21,10 @@ targets:
 version: '3.5'
 services:
   mc:
-    image: "${MC_IMAGE}:${MC_TAG}"
+    image: "${UFTMOBILE_IMAGE}:${UFTMOBILE_TAG}"
     ports:
     - "${UFTMOBILE_EXT_PORT}:${UFTMOBILE_INT_PORT}"
-    container_name: ${MC_CONTAINER_NAME}
+    container_name: ${UFTMOBILE_CONTAINER_NAME}
     hostname: nimbusserver.aos.com
     environment:
         - UFTMOBILE_EXT_PORT
@@ -41,8 +41,8 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-MC_CONTAINER_NAME: uft-mobile
-MC_TAG: '3.3_di'
+UFTMOBILE_CONTAINER_NAME: uft-mobile
+UFTMOBILE_TAG: '3.3_di'
 UFTMOBILE_EXT_PORT: 8084
 UFTMOBILE_INT_PORT: 8080
-MC_IMAGE: admpresales/uft-mobile
+UFTMOBILE_IMAGE: admpresales/uft-mobile
