@@ -25,21 +25,25 @@ pipeline {
             }
         }
         stage('nimbus.dockerapp - Checkout') {
-            checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a345baf7-5ec4-404c-a309-413b45b31f48', url: 'https://github.com/admpresales/nimbus-dockerapp']]])
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a345baf7-5ec4-404c-a309-413b45b31f48', url: 'https://github.com/admpresales/nimbus-dockerapp']]])
+            }
         }
         stage('nimbus.dockerapp - Build') {
+            steps {
             // Shell build step
-            sh """ 
-        echo $GIT_PREVIOUS_COMMIT
-        echo $GIT_COMMIT
-        CHANGED=\$(git diff --diff-filter=ACMT --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT)
-        docker login -u jhrabi -p "6NgybC&1qxE&qh#5MnL44vxt"
+                sh """ 
+                    echo $GIT_PREVIOUS_COMMIT
+                    echo $GIT_COMMIT
+                    CHANGED=\$(git diff --diff-filter=ACMT --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT)
+                    docker login -u jhrabi -p "6NgybC&1qxE&qh#5MnL44vxt"
     
-        for i in ${CHANGED}; do
-            docker-app validate ${i}
-            docker-app push ${i}
-        done
-    """
+                    for i in ${CHANGED}; do
+                        docker-app validate ${i}
+                        docker-app push ${i}
+                    done
+                """
+            }
         }
     }
 
