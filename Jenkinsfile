@@ -33,15 +33,15 @@ pipeline {
             steps {
             // Shell build step
                 sh """ 
-                    echo $GIT_PREVIOUS_COMMIT
-                    echo $GIT_COMMIT
-                    CHANGED=\$(git diff --diff-filter=ACMT --name-only $GIT_PREVIOUS_COMMIT $GIT_COMMIT)
+                    echo \$GIT_PREVIOUS_COMMIT
+                    echo \$GIT_COMMIT
+                    CHANGED=\$(git diff --diff-filter=ACMT --name-only \$GIT_PREVIOUS_COMMIT \$GIT_COMMIT)
                     docker login -u jhrabi -p "6NgybC&1qxE&qh#5MnL44vxt"
     
-                    for i in ${CHANGED}; do
-                        if [ $i != "Jenkinsfile" ]; then
-                            docker-app validate ${i}
-                            docker-app push ${i}
+                    for i in \${CHANGED}; do
+                        if [ \$i != "Jenkinsfile" ]; then
+                            docker-app validate \${i}
+                            docker-app push \${i}
                         fi
                     done
                 """

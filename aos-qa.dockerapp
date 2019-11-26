@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: "1.1.7"
+version: "2.1"
 # Name of the application
 name: aos-qa
 # A short description of the application
-description: "Advantage Online Shopping QA"
+description: "Advantage Online Shopping Beta"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  aos_postgres:
+  aos-postgres:
     image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
     ports:
     - "${POSTGRES_PORT}:5432"
@@ -29,7 +29,7 @@ services:
     container_name: ${POSTGRES_NAME}
     networks:
         demo-net:
-  aos_accountservice:
+  aos-accountservice:
     image: ${ACCOUNT_IMAGE}:${ACCOUNT_TAG}
     ports:
     - "${ACCOUNT_PORT}:8080"
@@ -43,14 +43,14 @@ services:
     - PGPASSWORD
     - "AGENT_NAME=${ACCOUNT_AGENT_NAME}"
     depends_on:
-    - "aos_postgres"
+    - "aos-postgres"
     container_name: ${ACCOUNT_NAME}
     networks:
         demo-net:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-  aos_main:
+  aos-main:
     image: ${MAIN_IMAGE}:${MAIN_TAG}
     ports:
     - "${MAIN_PORT}:8080"
@@ -64,7 +64,7 @@ services:
     - PGPASSWORD
     - "AGENT_NAME=${MAIN_AGENT_NAME}"
     depends_on:
-    - "aos_accountservice"
+    - "aos-accountservice"
     container_name: ${MAIN_NAME}
     networks:
         demo-net:
@@ -79,21 +79,21 @@ networks:
 ---
 # This section contains the default values for your application settings.
 ACCOUNT_AGENT_NAME: "aos-accountservice-qa"
-ACCOUNT_NAME: aos_accountservice_qa
-ACCOUNT_IP: nimbusserver
+ACCOUNT_NAME: aos-accountservice-qa
+ACCOUNT_IP: nimbusserver.aos.com
 ACCOUNT_PORT: "8401"
 ACCOUNT_IMAGE: admpresales/aos-accountservice
-ACCOUNT_TAG: 1.1.7
+ACCOUNT_TAG: "2.1"
 ACCOUNT_PORT_ON_MAIN: "8001"
 MAIN_AGENT_NAME: "aos-main-qa"
-MAIN_NAME: aos_main_qa
-MAIN_IP: nimbusserver
+MAIN_NAME: aos-main-qa
+MAIN_IP: nimbusserver.aos.com
 MAIN_PORT: "8400"
 MAIN_IMAGE: admpresales/aos-main-app
-MAIN_TAG: 1.1.7
-PGPASSWORD: admin
-POSTGRES_IP: nimbusserver
-POSTGRES_NAME: aos_postgres_qa
+MAIN_TAG: "2.1"
+PGPASSWORD: Ptr9=k_.A*xx=PGn
+POSTGRES_IP: nimbusserver.aos.com
+POSTGRES_NAME: aos-postgres-qa
 POSTGRES_PORT: "8432"
 POSTGRES_IMAGE: admpresales/aos-postgres
-POSTGRES_TAG: 1.1.7
+POSTGRES_TAG: "2.1"
