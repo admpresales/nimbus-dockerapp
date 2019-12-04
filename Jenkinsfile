@@ -3,6 +3,10 @@
 pipeline {
     agent any
 
+    environment {
+        MS_URL = 'https://outlook.office.com/webhook/1a000ca5-6a80-417d-90df-0d78169ae130@856b813c-16e5-49a5-85ec-6f081e13b527/JenkinsCI/9d88add532b341108db0c9ee70ff06c8/f31d390a-dfae-4481-970b-5fa560e59e5c'
+    }
+
     options {
         ansiColor('xterm')
     }

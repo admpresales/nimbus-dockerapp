@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 2.1.0-beta
+version: 2.1.0
 # Name of the application
 name: devops
 # A short description of the application
