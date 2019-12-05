@@ -28,12 +28,12 @@ pipeline {
                 }
             }
         }
-        stage('nimbus.dockerapp - Checkout') {
+        stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'a345baf7-5ec4-404c-a309-413b45b31f48', url: 'https://github.com/admpresales/nimbus-dockerapp']]])
             }
         }
-        stage('nimbus.dockerapp - Build') {
+        stage('Build') {
             steps {
             // Shell build step
                 sh """ 

@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "19.1.2-beta"
+version: "19.1.2"
 # Name of the application
 name: sca
 # A short description of the application

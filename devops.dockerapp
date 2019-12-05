@@ -4,7 +4,7 @@ version: 2.1.0
 # Name of the application
 name: devops
 # A short description of the application
-description: "Jenkins CI with AOS Git Repository to show DevOps build process for Nimbus"
+description: "Jenkins CI Server with AOS Git Repository to show DevOps build process for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
