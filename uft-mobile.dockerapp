@@ -43,6 +43,6 @@ networks:
 # This section contains the default values for your application settings.
 UFTMOBILE_CONTAINER_NAME: uft-mobile
 UFTMOBILE_TAG: '3.3_di'
-
+UFTMOBILE_EXT_PORT: 8084
 UFTMOBILE_INT_PORT: 8080
 UFTMOBILE_IMAGE: admpresales/uft-mobile
