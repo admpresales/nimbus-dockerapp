@@ -28,8 +28,8 @@ services:
         - "${UFTDEV_ENGINE_PORT}:5095"
       container_name: ${INTELLIJ_CONTAINER_NAME}
       depends_on:
-          - devtools
-          - sca
+          - intellij-devtools
+          - intellij-sca
       environment:
         - "DISPLAY=unix$${DISPLAY}"
         - "LFT_LIC_ID=${LFT_LIC_ID}"
@@ -54,7 +54,7 @@ services:
     volumes:
         - sca:/opt/Fortify/Fortify_SCA_and_Apps_19.1.2
         - sca-plugin:/intellij-plugin/FortifyAnalysis
-  devtools-sca:
+  intellij-devtools:
     image: ${DEVTOOLS_IMAGE}:${DEVTOOLS_TAG}
     container_name: ${DEVTOOLS_CONTAINER_NAME}
     command: bash -c "tail -f /dev/null"
