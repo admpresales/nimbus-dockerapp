@@ -61,4 +61,4 @@ SCA_CONTAINER_NAME: sca
 SCA_IMAGE: admpresales/sca
 DEVTOOLS_CONTAINER_NAME: sca-devtools
 DEVTOOLS_IMAGE: admpresales/devtools
-DEVTOOLS_TAG: "2.0"
+DEVTOOLS_TAG: "2.1"
