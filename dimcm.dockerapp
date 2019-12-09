@@ -50,11 +50,11 @@ networks:
 
 ---
 CM_CONTAINER_NAME: "dimcm"
-CM_TAG: "14.5.1"
+CM_TAG: "14.5.1-ga"
 CM_IMAGE: "admpresales/dimcm"
 CM_PORT: 671
 CM_WEB_PORT: 8060
 
 DB_CONTAINER_NAME: "dimcm_db"
-DB_TAG: "14.5.1"
+DB_TAG: "14.5.1-ga"
 DB_IMAGE: "admpresales/dimcm_db"
