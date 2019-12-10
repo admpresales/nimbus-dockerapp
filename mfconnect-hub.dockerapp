@@ -1,5 +1,5 @@
 # Metadata
-version: "4.2.1-beta"
+version: "4.2.0-HF1"
 name: mfconnect-hub
 description: "Micro Focus Connect with Start Team Server for Nimbus"
 namespace: admpresales
@@ -77,7 +77,7 @@ networks:
 # Connect Container Setup
 MFCONNECT_CONTAINER_NAME: "mfconnect"
 MFCONNECT_IMAGE: "admpresales/mfconnect"
-MFCONNECT_TAG: "4.2.1-beta"
+MFCONNECT_TAG: "4.2.0-HF1"
 MFCONNECT_PORT: "8081"
 MFCONNECT_SETUP: "yes"
 
