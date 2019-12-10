@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "9.54-dev"
+version: "9.54"
 # Name of the application
 name: ppm
 # A short description of the application
