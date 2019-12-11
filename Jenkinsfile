@@ -14,7 +14,7 @@ pipeline {
         stage('Notify Start') {
             steps {
                 script {
-                    msg = sh("git log -1 --oneline", returnStdout: true)
+                    msg = sh(script: "git log -1 --oneline", returnStdout: true)
                     slackSend(
                             channel: 'nimbus',
                             message: "${env.JOB_NAME} - ${currentBuild.displayName} ${currentBuild.buildCauses[0].shortDescription} (<${env.JOB_URL}|Open>)",
