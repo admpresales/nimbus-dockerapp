@@ -22,7 +22,7 @@ pipeline {
                     )
                     office365ConnectorSend(
                             color:  (currentBuild.previousBuild?.result == 'SUCCESS') ? '00FF00' : 'FF0000',
-                            message: "Build ${currentBuild.displayName} triggered by ${currentBuild.buildCauses[0].shortDescription}\n${msg}",
+                            message: "Build ${currentBuild.displayName} triggered by ${currentBuild.buildCauses[0].shortDescription}\r\n${msg}",
                             webhookUrl: "${env.MS_URL}",
                             status: "Building"
                     )
