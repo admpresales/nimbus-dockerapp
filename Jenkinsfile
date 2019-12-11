@@ -14,6 +14,7 @@ pipeline {
         stage('Notify Start') {
             steps {
                 script {
+                    msg = sh("git log -1 --oneline", returnStdout: true)
                     slackSend(
                             channel: 'nimbus',
                             message: "${env.JOB_NAME} - ${currentBuild.displayName} ${currentBuild.buildCauses[0].shortDescription} (<${env.JOB_URL}|Open>)",
@@ -21,7 +22,7 @@ pipeline {
                     )
                     office365ConnectorSend(
                             color:  (currentBuild.previousBuild?.result == 'SUCCESS') ? '00FF00' : 'FF0000',
-                            message: "Build ${currentBuild.displayName} triggered by ${currentBuild.buildCauses[0].shortDescription}",
+                            message: "Build ${currentBuild.displayName} triggered by ${currentBuild.buildCauses[0].shortDescription}\n${msg}",
                             webhookUrl: "${env.MS_URL}",
                             status: "Building"
                     )
