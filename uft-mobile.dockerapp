@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  mc:
+  uft-mobile:
     image: "${UFTMOBILE_IMAGE}:${UFTMOBILE_TAG}"
     ports:
     - "${UFTMOBILE_EXT_PORT}:${UFTMOBILE_INT_PORT}"
