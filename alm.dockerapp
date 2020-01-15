@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "15.0"
+version: "15.0.1-beta"
 # Name of the application
 name: alm
 # A short description of the application
@@ -41,7 +41,7 @@ networks:
 # This section contains the default values for your application settings.
 ALM_IMAGE: admpresales/alm
 ALM_CONTAINER_NAME: alm
-ALM_TAG: '15.0_di'
+ALM_TAG: '15.0.1'
 ALM_PORT: 8082
 ALM_DB_PORT: 1433
 ALM_SHM_SIZE: 2G
