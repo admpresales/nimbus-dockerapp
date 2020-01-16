@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 2.1.0
+version: 2.1.1-beta
 # Name of the application
 name: intellij
 # A short description of the application
@@ -78,7 +78,7 @@ volumes:
 ---
 # This section contains the default values for your application settings.
 INTELLIJ_CONTAINER_NAME: intellij
-INTELLIJ_TAG: 2.1.0
+INTELLIJ_TAG: 2.1.1
 INTELLIJ_IMAGE: admpresales/intellij
 OBJECTSPY_PORT: 8824
 UFTDEV_ENGINE_PORT: 5095
