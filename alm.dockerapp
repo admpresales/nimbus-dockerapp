@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "15.0.1-beta"
+version: "15.0.1"
 # Name of the application
 name: alm
 # A short description of the application
