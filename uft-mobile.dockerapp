@@ -28,6 +28,7 @@ services:
     hostname: nimbusserver.aos.com
     environment:
         - UFTMOBILE_EXT_PORT
+        - UFTMOBILE_INT_PORT
     shm_size: 2G
     networks:
         demo-net:
