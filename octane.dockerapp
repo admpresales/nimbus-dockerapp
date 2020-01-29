@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 15.0.20.58
+version: 15.0.40.49-beta
 # Name of the application
 name: octane
 # A short description of the application
@@ -42,7 +42,7 @@ networks:
 # This section contains the default values for your application settings.
 # Synchronizer ports left in in case we need to put it back in for some reason. This will be deprecated later.
 OCTANE_IMAGE: admpresales/octane
-OCTANE_TAG: 15.0.20.58_di
+OCTANE_TAG: 15.0.40.49_i
 OCTANE_HOST: nimbusserver.aos.com
 OCTANE_CONTAINER_NAME: octane
 OCTANE_PORT: 8085
