@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 2.1.1-beta
+version: 2.1.1
 # Name of the application
 name: intellij
 # A short description of the application
