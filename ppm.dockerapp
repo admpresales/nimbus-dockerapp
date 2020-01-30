@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "9.54"
+version: "9.55-dev"
 # Name of the application
 name: ppm
 # A short description of the application
@@ -44,7 +44,7 @@ networks:
 # This section contains the default values for your application settings.
 PPM_CONTAINER_NAME: ppm
 PPM_IMAGE: admpresales/ppm
-PPM_TAG: '9.54_di'
+PPM_TAG: '9.55_di'
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
 PPM_RMI_PORT: 1098
