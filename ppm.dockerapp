@@ -43,7 +43,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 PPM_CONTAINER_NAME: ppm
-PPM_IMAGE: admpresales/ppm
+PPM_IMAGE: admpresales/ppm-dev
 PPM_TAG: '9.55_di'
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
