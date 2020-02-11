@@ -1,5 +1,5 @@
 name: rpa
-version: 2019.11-beta2
+version: 2019.11
 description: "Robotic Process Automation server components for Nimbus platform"
 namespace: admpresales
 
