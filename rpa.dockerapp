@@ -1,0 +1,136 @@
+name: rpa
+version: 2019.11-beta2
+description: "Robotic Process Automation server components for Nimbus platform"
+namespace: admpresales
+
+---
+version: '3.7'
+
+services:
+    db:
+        image: ${DB_IMAGE}:${TAG}
+        container_name: rpa-db
+        hostname: rpa-db.aos.com
+        environment:
+            - "PGDATA=/db"
+            - "POSTGRES_PASSWORD=Password1!"
+        networks:
+            demo-net:
+                aliases: [ 'rpa-db.aos.com' ]
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+        healthcheck:
+            # https://github.com/docker-library/healthcheck/tree/master/postgres
+            test: PGPASSWORD="Password1!" psql --host rpa-db.aos.com -U postgres -c 'SELECT 1' --quiet --tuples-only --no-align
+
+    queue:
+        image: ${QUEUE_IMAGE}:${TAG}
+        container_name: rpa-queue
+        hostname: rpa-queue.aos.com
+        environment:
+            - "RABBITMQ_DEFAULT_VHOST=demo_virtual_host"
+        ports:
+            - "${QUEUE_PORT}:${QUEUE_PORT}"
+        networks:
+            demo-net:
+                aliases: [ 'rpa-queue.aos.com' ]
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+        healthcheck:
+            test:
+                - CMD
+                - rabbitmqctl 
+                - eval
+                - |
+                    { true, rabbit_app_booted_and_running } = { rabbit:is_booted(node()), rabbit_app_booted_and_running },
+                    { [], no_alarms } = { rabbit:alarms(), no_alarms },
+                    [] /= rabbit_networking:active_listeners(),
+                    rabbitmq_node_is_healthy.
+                - '||'
+                - exit
+                - '1'
+
+    designer:
+        image: ${DESIGNER_IMAGE}:${TAG}
+        container_name: rpa-designer
+        hostname: rpa-designer.aos.com
+        environment:
+            - "RPA_PROG=/opt/microfocus/rpa/designer/bin/wrapper"
+            - "RPA_CONF=/opt/microfocus/rpa/designer/conf/designer-wrapper.conf"
+            - "RPA_WAIT=rpa-db.aos.com:${DB_PORT}"
+        ports:
+            - "${DESIGNER_PORT}:${DESIGNER_PORT}"
+        depends_on:
+            - db
+        networks:
+            demo-net:
+                aliases: [ 'rpa-designer.aos.com' ]
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+        healthcheck:
+            test: curl -f -k https://rpa-designer.aos.com:${DESIGNER_PORT}/oo-designer/rest/v0/version || exit 1
+
+    central:
+        image: ${CENTRAL_IMAGE}:${TAG}
+        container_name: rpa-central
+        hostname: rpa-central.aos.com
+        environment:
+            - "RPA_PROG=/opt/microfocus/rpa/central/bin/wrapper"
+            - "RPA_CONF=/opt/microfocus/rpa/central/conf/central-wrapper.conf"
+            - "RPA_WAIT=rpa-designer.aos.com:${DESIGNER_PORT} rpa-queue:${QUEUE_PORT}"
+        ports:
+            - "${CENTRAL_PORT}:${CENTRAL_PORT}"
+        depends_on:
+            - designer
+            - queue
+        networks:
+            demo-net:
+                aliases: [ 'rpa-central.aos.com' ]
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+        healthcheck:
+            test: curl -f -k https://rpa-central.aos.com:${CENTRAL_PORT} || exit 1
+
+    ssx:
+        image: ${SSX_IMAGE}:${TAG}
+        container_name: rpa-ssx
+        hostname: rpa-ssx.aos.com
+        environment:
+            - "RPA_PROG=/opt/microfocus/rpa/ssx/bin/wrapper"
+            - "RPA_CONF=/opt/microfocus/rpa/ssx/conf/ssx-wrapper.conf"
+            - "RPA_WAIT=rpa-central.aos.com:${CENTRAL_PORT}"
+        ports:
+            - "${SSX_PORT}:${SSX_PORT}"
+        depends_on:
+            - central
+        networks:
+            demo-net:
+                aliases: [ 'rpa-ssx.aos.com' ]
+        extra_hosts:
+            - "nimbusserver.aos.com:172.50.0.1"
+            - "nimbusserver:172.50.0.1"
+        healthcheck:
+            test: curl -f -k https://rpa-ssx.aos.com:${SSX_PORT} || exit 1
+
+networks:
+    demo-net:
+        external: true
+
+---
+TAG: "2019.11"
+
+DB_IMAGE: "admpresales/rpa-db"
+QUEUE_IMAGE: "admpresales/rpa-queue"
+DESIGNER_IMAGE: "admpresales/rpa-designer"
+CENTRAL_IMAGE: "admpresales/rpa-central"
+SSX_IMAGE: "admpresales/rpa-ssx"
+
+DESIGNER_PORT: "8447"
+CENTRAL_PORT: "8443"
+SSX_PORT: "8446"
+DB_PORT: "5432"
+QUEUE_PORT: "5672"
