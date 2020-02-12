@@ -29,6 +29,7 @@ services:
     - "${PPM_DB_PORT}:1521"
     container_name: ${PPM_CONTAINER_NAME}
     hostname: ppm.aos.com
+    autostart:
     shm_size: ${PPM_SHM_SIZE}
     networks:
         demo-net:
