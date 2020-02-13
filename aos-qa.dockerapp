@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "2.1"
+version: "2.2"
 # Name of the application
 name: aos-qa
 # A short description of the application
@@ -83,17 +83,17 @@ ACCOUNT_NAME: aos-accountservice-qa
 ACCOUNT_IP: nimbusserver.aos.com
 ACCOUNT_PORT: "8401"
 ACCOUNT_IMAGE: admpresales/aos-accountservice
-ACCOUNT_TAG: "2.1"
+ACCOUNT_TAG: "2.2"
 ACCOUNT_PORT_ON_MAIN: "8001"
 MAIN_AGENT_NAME: "aos-main-qa"
 MAIN_NAME: aos-main-qa
 MAIN_IP: nimbusserver.aos.com
 MAIN_PORT: "8400"
 MAIN_IMAGE: admpresales/aos-main-app
-MAIN_TAG: "2.1"
+MAIN_TAG: "2.2"
 PGPASSWORD: Ptr9=k_.A*xx=PGn
 POSTGRES_IP: nimbusserver.aos.com
 POSTGRES_NAME: aos-postgres-qa
 POSTGRES_PORT: "8432"
 POSTGRES_IMAGE: admpresales/aos-postgres
-POSTGRES_TAG: "2.1"
+POSTGRES_TAG: "2.2"
