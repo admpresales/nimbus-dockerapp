@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 6.3.0
+version: 6.3.1-dev
 # Name of the application
 name: da
 # A short description of the application
@@ -37,7 +37,7 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-DA_TAG: 6.3.0_di
+DA_TAG: 6.3.1_di
 DA_IMAGE: admpresales/da-server
 DA_CONTAINER_NAME: da
 DA_PORT: 8089
