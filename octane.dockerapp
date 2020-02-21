@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 15.0.40.49-beta
+version: 15.0.40.49
 # Name of the application
 name: octane
 # A short description of the application
