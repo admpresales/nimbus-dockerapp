@@ -42,6 +42,6 @@ networks:
 # This section contains the default values for your application settings.
 SITESCOPE_IMAGE: microfocus/sitescope
 SITESCOPE_CONTAINER_NAME: sitescope
-ALM_TAG: '2019.11'
+SITESCOPE_TAG: '2019.11'
 SITESCOPE_PORT: 8887
 SITESCOPE_REPORT_PORT: 8888
