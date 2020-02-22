@@ -26,6 +26,7 @@ services:
     - "${SITESCOPE_PORT}:8080"
     - "${SITESCOPE_REPORT_PORT}:8888"
     environment:
+        - "disable_tls=true"
         - "JAVA_OPTS= -Xms256m -Xmx512m"
     container_name: ${SITESCOPE_CONTAINER_NAME}
     hostname: sitescope.aos.com
