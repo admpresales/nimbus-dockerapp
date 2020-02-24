@@ -1,0 +1,73 @@
+# This section contains your application metadata.
+# Version of the application
+version: "2020"
+# Name of the application
+name: lre
+# A short description of the application
+description: "LoadRunner Enterprise for Nimbus Demo Platform - Windows Only"
+# Namespace to use when pushing to a registry. This is typically your Hub username.
+namespace: "admpresales"
+# List of application maitainers with name and email for each
+maintainers:
+  - name: Jason Hrabi
+    email: jason.hrabi@microfocus.com
+# Specify false here if your application doesn't support Swarm or Kubernetes
+targets:
+  swarm: false
+  kubernetes: false
+
+---
+# This section contains the Compose file that describes your application services.
+version: '3.5'
+services:
+  lrhost:
+    image: performancetesting/host_test_2019:20.00
+    container_name: "lrhost"
+    hostname: Controller
+    ports:
+    - 8731:8731
+    - 8086:8086
+    dns: 16.59.67.151
+    network_mode: nat
+    stdin_open: true
+    tty: true
+  lg:
+    image: performancetesting/load_generator_windows_test_2019:20.00
+    container_name: "lgsa"
+    ports:
+    - 54245:54245
+    - 54345:54345
+    dns: 16.59.67.151
+    network_mode: nat
+    stdin_open: true
+    tty: true
+  lreserver:
+    image: performancetesting/lreserver_test_2019:20.00
+    depends_on:
+    - mssql
+    container_name: "lre"
+    ports:
+    - 80:80
+    - 5876:5876
+    dns: 16.59.67.151
+    hostname: lreserver
+    network_mode: nat
+    stdin_open: true
+    tty: true
+    volumes:
+      - c:\temp:c:\temp
+  mssql:
+    image: performancetesting/custom_mssql:2017
+    container_name: "mssql"
+    hostname: mssql
+    ports:
+    - 1433:1433
+    network_mode: nat
+    stdin_open: true
+    tty: true
+    environment:
+    - "sa_password=W3lcome1"
+    - "ACCEPT_EULA=Y"
+
+---
+# This section contains the default values for your application settings.
