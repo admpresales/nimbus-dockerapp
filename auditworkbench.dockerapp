@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  sca:
+  auditworkbench:
     image: ${SCA_IMAGE}:${SCA_TAG}
     container_name: ${WORKBENCH_CONTAINER_NAME}
     environment:
