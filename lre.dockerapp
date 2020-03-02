@@ -57,7 +57,7 @@ services:
     volumes:
       - c:\temp:c:\temp
   mssql:
-    image: performancetesting/custom_mssql:2017
+    image: admpresales/mssql:server2019
     container_name: "mssql"
     hostname: mssql
     ports:
