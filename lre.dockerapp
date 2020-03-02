@@ -30,7 +30,7 @@ services:
     dns: 16.59.67.151
     network_mode: nat
     stdin_open: true
-    tty: true
+    #tty: true
   lg:
     image: performancetesting/load_generator_windows_test_2019:20.00
     container_name: "lgsa"
@@ -40,7 +40,7 @@ services:
     dns: 16.59.67.151
     network_mode: nat
     stdin_open: true
-    tty: true
+    #tty: true
   lreserver:
     image: performancetesting/lreserver_test_2019:20.00
     depends_on:
@@ -53,7 +53,7 @@ services:
     hostname: lreserver
     network_mode: nat
     stdin_open: true
-    tty: true
+    #tty: true
     volumes:
       - c:\temp:c:\temp
   mssql:
@@ -64,7 +64,7 @@ services:
     - 1433:1433
     network_mode: nat
     stdin_open: true
-    tty: true
+    #tty: true
     environment:
     - "sa_password=W3lcome1"
     - "ACCEPT_EULA=Y"
