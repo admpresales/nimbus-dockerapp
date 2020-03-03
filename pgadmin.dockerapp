@@ -20,7 +20,7 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.7'
 services:
-  PGADMIN:
+  pgadmin:
     image: "${PGADMIN_IMAGE}:${PGADMIN_TAG}"
     ports:
     - "${PGADMIN_PORT}:80"
