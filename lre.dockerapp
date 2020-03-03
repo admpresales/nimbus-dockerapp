@@ -21,35 +21,35 @@ targets:
 version: '3.5'
 services:
   lrhost:
-    image: performancetesting/host_test_2019:20.00
+    image: performancetesting/host_test_2019:20.01
     container_name: "lrhost"
     hostname: Controller
     ports:
     - 8731:8731
     - 8086:8086
-    dns: 16.59.67.151
+    #dns: 16.59.67.151
     network_mode: nat
     stdin_open: true
     #tty: true
   lg:
-    image: performancetesting/load_generator_windows_test_2019:20.00
+    image: performancetesting/load_generator_windows_test_2019:20.01
     container_name: "lgsa"
     ports:
     - 54245:54245
     - 54345:54345
-    dns: 16.59.67.151
+    #dns: 16.59.67.151
     network_mode: nat
     stdin_open: true
     #tty: true
   lreserver:
-    image: performancetesting/lreserver_test_2019:20.00
+    image: performancetesting/lreserver_test_2019:20.01
     depends_on:
     - mssql
     container_name: "lre"
     ports:
     - 80:80
     - 5876:5876
-    dns: 16.59.67.151
+    #dns: 16.59.67.151
     hostname: lreserver
     network_mode: nat
     stdin_open: true
