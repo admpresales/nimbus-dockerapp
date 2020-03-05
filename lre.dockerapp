@@ -28,7 +28,7 @@ services:
     - 8731:8731
     - 8086:8086
     #dns: 16.59.67.151
-    network_mode: nat
+    network_mode: host
     stdin_open: true
     #tty: true
   lg:
@@ -38,7 +38,7 @@ services:
     - 54245:54245
     - 54345:54345
     #dns: 16.59.67.151
-    network_mode: nat
+    network_mode: host
     stdin_open: true
     #tty: true
   lreserver:
@@ -51,7 +51,7 @@ services:
     - 5876:5876
     #dns: 16.59.67.151
     hostname: lreserver
-    network_mode: nat
+    network_mode: host
     stdin_open: true
     #tty: true
     volumes:
@@ -62,7 +62,7 @@ services:
     hostname: mssql
     ports:
     - 1433:1433
-    network_mode: nat
+    network_mode: host
     stdin_open: true
     #tty: true
     environment:
