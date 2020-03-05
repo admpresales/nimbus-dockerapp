@@ -27,18 +27,18 @@ services:
     ports:
     - 8731:8731
     - 8086:8086
-    network_mode: host
+    network_mode: nat
     stdin_open: true
-    #tty: true
+    tty: true
   lg:
     image: performancetesting/load_generator_windows_test_2019:20.01
     container_name: "lgsa"
     ports:
     - 54245:54245
     - 54345:54345
-    network_mode: host
+    network_mode: nat
     stdin_open: true
-    #tty: true
+    tty: true
   lreserver:
     image: performancetesting/lreserver_test_2019:20.01
     depends_on:
@@ -48,9 +48,9 @@ services:
     - 80:80
     - 5876:5876
     hostname: lreserver
-    network_mode: host
+    network_mode: nat
     stdin_open: true
-    #tty: true
+    tty: true
     volumes:
       - c:\temp:c:\temp
   mssql:
@@ -59,7 +59,7 @@ services:
     hostname: mssql
     ports:
     - 1433:1433
-    network_mode: host
+    network_mode: nat
     stdin_open: true
     #tty: true
     environment:
