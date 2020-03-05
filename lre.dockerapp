@@ -27,7 +27,6 @@ services:
     ports:
     - 8731:8731
     - 8086:8086
-    #dns: 16.59.67.151
     network_mode: host
     stdin_open: true
     #tty: true
@@ -37,7 +36,6 @@ services:
     ports:
     - 54245:54245
     - 54345:54345
-    #dns: 16.59.67.151
     network_mode: host
     stdin_open: true
     #tty: true
@@ -49,7 +47,6 @@ services:
     ports:
     - 80:80
     - 5876:5876
-    #dns: 16.59.67.151
     hostname: lreserver
     network_mode: host
     stdin_open: true
