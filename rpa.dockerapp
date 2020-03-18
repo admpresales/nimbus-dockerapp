@@ -8,7 +8,7 @@ version: '3.7'
 
 services:
     db:
-        image: ${DB_IMAGE}:${TAG}
+        image: ${DB_IMAGE}:${DB_TAG}
         container_name: rpa-db
         hostname: rpa-db.aos.com
         environment:
@@ -25,7 +25,7 @@ services:
             test: PGPASSWORD="Password1!" psql --host rpa-db.aos.com -U postgres -c 'SELECT 1' --quiet --tuples-only --no-align
 
     queue:
-        image: ${QUEUE_IMAGE}:${TAG}
+        image: ${QUEUE_IMAGE}:${QUEUE_TAG}
         container_name: rpa-queue
         hostname: rpa-queue.aos.com
         environment:
@@ -53,7 +53,7 @@ services:
                 - '1'
 
     designer:
-        image: ${DESIGNER_IMAGE}:${TAG}
+        image: ${DESIGNER_IMAGE}:${DESIGNER_TAG}
         container_name: rpa-designer
         hostname: rpa-designer.aos.com
         environment:
@@ -74,7 +74,7 @@ services:
             test: curl -f -k https://rpa-designer.aos.com:${DESIGNER_PORT}/oo-designer/rest/v0/version || exit 1
 
     central:
-        image: ${CENTRAL_IMAGE}:${TAG}
+        image: ${CENTRAL_IMAGE}:${CENTRAL_TAG}
         container_name: rpa-central
         hostname: rpa-central.aos.com
         environment:
@@ -96,7 +96,7 @@ services:
             test: curl -f -k https://rpa-central.aos.com:${CENTRAL_PORT} || exit 1
 
     ssx:
-        image: ${SSX_IMAGE}:${TAG}
+        image: ${SSX_IMAGE}:${SSX_TAG}
         container_name: rpa-ssx
         hostname: rpa-ssx.aos.com
         environment:
@@ -121,7 +121,11 @@ networks:
         external: true
 
 ---
-TAG: "2019.11"
+DB_TAG: "2019.11"
+QUEUE_TAG: "2019.11"
+DESIGNER_TAG: "2019.11"
+CENTRAL_TAG: "2019.11-LHF"
+SSX_TAG: "2019.11"
 
 DB_IMAGE: "admpresales/rpa-db"
 QUEUE_IMAGE: "admpresales/rpa-queue"
@@ -129,8 +133,8 @@ DESIGNER_IMAGE: "admpresales/rpa-designer"
 CENTRAL_IMAGE: "admpresales/rpa-central"
 SSX_IMAGE: "admpresales/rpa-ssx"
 
+DB_PORT: "5432"
+QUEUE_PORT: "5672"
 DESIGNER_PORT: "8447"
 CENTRAL_PORT: "8443"
 SSX_PORT: "8446"
-DB_PORT: "5432"
-QUEUE_PORT: "5672"
