@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: "19.1.2"
+version: "4.18"
 # Name of the application
-name: sca
+name: pgadmin
 # A short description of the application
-description: "Fortify Source Code Analyzer (SCA) Audit Workbench for Nimbus"
+description: "pgAdmin for Nimbus"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -18,28 +18,31 @@ targets:
 
 ---
 # This section contains the Compose file that describes your application services.
-version: '3.5'
+version: '3.7'
 services:
-  auditworkbench:
-    image: ${SCA_IMAGE}:${SCA_TAG}
-    container_name: ${WORKBENCH_CONTAINER_NAME}
+  pgadmin:
+    image: "${PGADMIN_IMAGE}:${PGADMIN_TAG}"
+    ports:
+    - "${PGADMIN_PORT}:80"
     environment:
-      - "DISPLAY=unix$${DISPLAY}"
+    - PGADMIN_DEFAULT_EMAIL
+    - PGADMIN_DEFAULT_PASSWORD
+    container_name: ${PGADMIN_CONTAINER_NAME}
+    hostname: pgadmin.aos.com
     networks:
         demo-net:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-    volumes:
-        - /tmp/.X11-unix:/tmp/.X11-unix
-    command: /bin/bash -c "/startup/startup.sh | /opt/Fortify/Fortify_SCA_and_Apps_${SCA_TAG}/bin/auditworkbench"
-
 networks:
    demo-net:
      external: true
 
 ---
 # This section contains the default values for your application settings.
-SCA_TAG: "19.1.2"
-WORKBENCH_CONTAINER_NAME: auditworkbench
-SCA_IMAGE: admpresales/sca
+PGADMIN_IMAGE: dpage/pgadmin4
+PGADMIN_CONTAINER_NAME: pgadmin
+PGADMIN_TAG: '4.18'
+PGADMIN_PORT: 8098
+PGADMIN_DEFAULT_EMAIL: admin@aos.com
+PGADMIN_DEFAULT_PASSWORD: Password1
