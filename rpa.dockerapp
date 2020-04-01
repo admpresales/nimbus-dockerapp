@@ -4,7 +4,7 @@ description: "Robotic Process Automation server components for Nimbus platform"
 namespace: admpresales
 
 ---
-version: '3.7'
+version: '3.5'
 
 services:
     db:
