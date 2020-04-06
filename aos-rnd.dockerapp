@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "2.0"
+version: "2.3"
 # Name of the application
 name: aos
 # A short description of the application
@@ -83,17 +83,17 @@ ACCOUNT_NAME: aos_accountservice
 ACCOUNT_IP: nimbusserver.aos.com
 ACCOUNT_PORT: "8001"
 ACCOUNT_IMAGE: advantageonlineshopping/aos-accountservice
-ACCOUNT_TAG: "2.0"
+ACCOUNT_TAG: "2.3"
 MAIN_AGENT_NAME: "aos-main-dev"
 MAIN_NAME: aos_main
 MAIN_IP: nimbusserver.aos.com
 MAIN_PORT: "8000"
 MAIN_IMAGE: advantageonlineshopping/aos-main-app
-MAIN_TAG: "2.0"
+MAIN_TAG: "2.3"
 PGPASSWORD: Ptr9=k_.A*xx=PGn
 POSTGRES_IP: aos_postgres
 POSTGRES_NAME: aos_postgres
 POSTGRES_PORT: "5432"
 POSTGRES_IMAGE: advantageonlineshopping/aos-postgres
-POSTGRES_TAG: "2.0"
+POSTGRES_TAG: "2.3"
 
