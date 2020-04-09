@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Notify Start') {
             steps {
-                withCredentials([string(credentialsId: 'teams-webhook-url', variable: 'MS_URL')]) {
+                withCredentials([string(credentialsId: 'teams-webhook-url', variable: 'WEBHOOK')]) {
                     script {
                         msg = sh(script: "git log -1 --oneline", returnStdout: true)
                         slackSend(
@@ -20,7 +20,7 @@ pipeline {
                         office365ConnectorSend(
                                 color:  (currentBuild.previousBuild?.result == 'SUCCESS') ? '00FF00' : 'FF0000',
                                 message: "Build ${currentBuild.displayName} triggered by ${currentBuild.buildCauses[0].shortDescription}\r\n\r\n${msg}",
-                                webhookUrl: "${env.MS_URL}",
+                                webhookUrl: "${env.WEBHOOK}",
                                 status: "Building"
                         )
                     }
@@ -64,7 +64,7 @@ pipeline {
                 office365ConnectorSend(
                         color:  (currentBuild.currentResult == 'SUCCESS') ? '00FF00' : 'FF0000',
                         message: "Build ${currentBuild.displayName} *${currentBuild.currentResult}* in ${currentBuild.durationString.replaceAll(' and counting', '')}",
-                        webhookUrl: "${env.MS_URL}",
+                        webhookUrl: "${env.WEBHOOK}",
                         status: "${currentBuild.currentResult}"
                 )
             }
