@@ -39,7 +39,7 @@ pipeline {
                         echo \$GIT_PREVIOUS_COMMIT
                         echo \$GIT_COMMIT
                         CHANGED=\$(git diff --diff-filter=ACMT --name-only \$GIT_PREVIOUS_COMMIT \$GIT_COMMIT)
-                        docker login -u "\$HUB_USER" <<< "\$HUB_PASS"
+                        docker login -u "\$HUB_USER" -p "\$HUB_PASS"
         
                         for i in \${CHANGED}; do
                             if [ \$i != "Jenkinsfile" ]; then
