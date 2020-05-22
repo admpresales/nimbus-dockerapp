@@ -58,10 +58,8 @@ networks:
 
 ---
 # This section contains the default values for your application settings.
-PPM_VERSION: 9.60
-OCTANE_VERSION: 15.0.60.90
 OCTANE_IMAGE: admpresales/octane
-OCTANE_TAG: $OCTANE_VERSION_di-ppm$PPM_VERSION_di
+OCTANE_TAG: 15.0.60.90_di-ppm9.60_di
 OCTANE_HOST: nimbusserver.aos.com
 OCTANE_CONTAINER_NAME: octane-ppm
 INTEGRATION_BRIDGE_PORT: 9081
@@ -71,7 +69,7 @@ SYNCHRONIZER_PORT: 9082
 OCTANE_SHM_SIZE: 2G
 PPM_CONTAINER_NAME: ppm-octane
 PPM_IMAGE: admpresales/ppm
-PPM_TAG: $PPM_VERSION_di-octane$OCTANE_VERSION_di
+PPM_TAG: 9.60_di-octane15.0.60.90_di
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
 PPM_DB_PORT: 1098
