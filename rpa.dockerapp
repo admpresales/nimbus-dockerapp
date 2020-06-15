@@ -1,5 +1,5 @@
 name: rpa
-version: "2019.11"
+version: "2020.02"
 description: "Robotic Process Automation server components for Nimbus platform"
 namespace: admpresales
 
@@ -71,7 +71,7 @@ services:
             - "nimbusserver.aos.com:172.50.0.1"
             - "nimbusserver:172.50.0.1"
         healthcheck:
-            test: curl -f -k https://rpa-designer.aos.com:${DESIGNER_PORT}/oo-designer/rest/v0/version || exit 1
+            test: curl -f -k https://rpa-designer.aos.com:${DESIGNER_PORT}/oo-designer/hello.html || exit 1
 
     central:
         image: ${CENTRAL_IMAGE}:${CENTRAL_TAG}
@@ -93,7 +93,7 @@ services:
             - "nimbusserver.aos.com:172.50.0.1"
             - "nimbusserver:172.50.0.1"
         healthcheck:
-            test: curl -f -k https://rpa-central.aos.com:${CENTRAL_PORT} || exit 1
+            test: curl -f -k https://rpa-central.aos.com:${CENTRAL_PORT}/oo/hello.html || exit 1
 
     ssx:
         image: ${SSX_IMAGE}:${SSX_TAG}
@@ -114,18 +114,18 @@ services:
             - "nimbusserver.aos.com:172.50.0.1"
             - "nimbusserver:172.50.0.1"
         healthcheck:
-            test: curl -f -k https://rpa-ssx.aos.com:${SSX_PORT} || exit 1
+            test: curl -f -k https://rpa-ssx.aos.com:${SSX_PORT}/oo-ssx/hello.html || exit 1
 
 networks:
     demo-net:
         external: true
 
 ---
-DB_TAG: "2019.11"
-QUEUE_TAG: "2019.11"
-DESIGNER_TAG: "2019.11"
-CENTRAL_TAG: "2019.11-LHF"
-SSX_TAG: "2019.11"
+DB_TAG: "2020.02"
+QUEUE_TAG: "2020.02"
+DESIGNER_TAG: "2020.02"
+CENTRAL_TAG: "2020.02"
+SSX_TAG: "2020.02"
 
 DB_IMAGE: "admpresales/rpa-db"
 QUEUE_IMAGE: "admpresales/rpa-queue"
