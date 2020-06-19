@@ -39,7 +39,7 @@ services:
     stdin_open: true
     tty: true
   lreserver:
-    image: performancetesting/lreserver_test_2019:20.01
+    image: performancetesting/lreserver_test_2019:20.01_aws
     depends_on:
     - mssql
     container_name: "lre"
