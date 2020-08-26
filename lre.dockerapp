@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "2020"
+version: "2020.2"
 # Name of the application
 name: lre
 # A short description of the application
@@ -18,28 +18,47 @@ targets:
 
 ---
 # This section contains the Compose file that describes your application services.
-version: '3.7'
+version: '3'
 services:
-  lrhost:
-    image: performancetesting/host_test_2019:20.01
-    container_name: "lrhost"
+  lre-host1:
+    image: performancetesting/host:20.02
+    container_name: "lre-host1"
     hostname: Controller
     ports:
     - 8731:8731
     - 8086:8086
     network_mode: nat
     stdin_open: true
-  lg:
-    image: performancetesting/load_generator_windows_test_2019:20.01
-    container_name: "lgsa"
+    command: 'cat C:/hostetc/hosts | Out-File -FilePath C:/windows/system32/drivers/etc/hosts; "Powershell"'
+    volumes:
+      - c:\windows\system32\drivers\etc:c:\hostetc
+  lre-host2:
+    image: performancetesting/host_private:20.02
+    container_name: "lre-host2"
+    hostname: Controller
+    ports:
+      - 8732:8731
+      - 8087:8086
+    network_mode: nat
+    stdin_open: true
+    command: 'cat C:/hostetc/hosts | Out-File -FilePath C:/windows/system32/drivers/etc/hosts; "Powershell"'
+    volumes:
+      - c:\windows\system32\drivers\etc:c:\hostetc
+  lg-1:
+    image: performancetesting/one_load_generator_windows:20.02
+    container_name: "lg-1"
     ports:
     - 54245:54245
     - 54345:54345
     network_mode: nat
     stdin_open: true
-    tty: true
+    command: 'cat C:/hostetc/hosts | Out-File -FilePath C:/windows/system32/drivers/etc/hosts; "Powershell"'
+    volumes:
+      - c:\windows\system32\drivers\etc:c:\hostetc
   lreserver:
-    image: performancetesting/lreserver_test_2019:20.01_aws
+    image: admpresales/lre-server:2020.2
+    environment:
+    - "ASPNETCORE_ENVIRONMENT=DevCI"
     depends_on:
     - mssql
     container_name: "lre"
@@ -49,10 +68,13 @@ services:
     hostname: lreserver
     network_mode: nat
     stdin_open: true
-    volumes:
-      - c:\temp:c:\temp
+    healthcheck:
+      test: ["CMD-SHELL", "curl.exe --fail http://localhost/admin || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 10
   mssql:
-    image: performancetesting/custom_mssql:2019
+    image: admpresales/lre-db:2020.2
     container_name: "mssql"
     hostname: mssql
     ports:
