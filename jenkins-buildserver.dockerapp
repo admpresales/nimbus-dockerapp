@@ -27,7 +27,7 @@ services:
     - "50001:50001"
     container_name: jenkins-build
     volumes:
-      - /jenkins:/var/jenkins_hom
+      - /jenkins:/var/jenkins_home
 
 
 ---
