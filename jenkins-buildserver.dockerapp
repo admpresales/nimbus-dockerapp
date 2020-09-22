@@ -2,9 +2,9 @@
 # Version of the application
 version: "latest"
 # Name of the application
-name: aos
+name: jenkins-buildserver
 # A short description of the application
-description: "Advantage Online Shopping"
+description: "Jenkins Build Server"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
