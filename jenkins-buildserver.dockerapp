@@ -1,10 +1,10 @@
 # This section contains your application metadata.
 # Version of the application
-version: "15.0.1"
+version: "latest"
 # Name of the application
-name: alm
+name: aos
 # A short description of the application
-description: "ALM .NET for Nimbus"
+description: "Advantage Online Shopping"
 # Namespace to use when pushing to a registry. This is typically your Hub username.
 namespace: "admpresales"
 # List of application maitainers with name and email for each
@@ -20,28 +20,17 @@ targets:
 # This section contains the Compose file that describes your application services.
 version: '3.5'
 services:
-  alm:
-    image: "${ALM_IMAGE}:${ALM_TAG}"
+  jenkins-build:
+    image: jenkins:jenkins
     ports:
-    - "${ALM_PORT}:8080"
-    - "${ALM_DB_PORT}:1433"
-    container_name: ${ALM_CONTAINER_NAME}
-    hostname: alm.aos.com
-    shm_size: ${ALM_SHM_SIZE}
-    networks:
-        demo-net:
-    extra_hosts:
-        - "nimbusserver.aos.com:172.50.0.1"
-        - "nimbusserver:172.50.0.1"
-networks:
-   demo-net:
-     external: true
+    - "9090:8080"
+    - "50001:50001"
+    container_name: jenkins-build
+    volumes:
+      - /jenkins:/var/jenkins_hom
+
 
 ---
 # This section contains the default values for your application settings.
-ALM_IMAGE: admpresales/alm
-ALM_CONTAINER_NAME: alm
-ALM_TAG: '15.0.1_di'
-ALM_PORT: 8082
-ALM_DB_PORT: 1433
-ALM_SHM_SIZE: 2G
+
+
