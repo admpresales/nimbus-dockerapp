@@ -21,7 +21,7 @@ targets:
 version: '3.5'
 services:
   jenkins-build:
-    image: jenkins:jenkins
+    image: jenkins/jenkins
     ports:
     - "9090:8080"
     - "50001:50001"
