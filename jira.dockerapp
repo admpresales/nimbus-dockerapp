@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "8.0.2"
+version: "8.12.3"
 # Name of the application
 name: jira
 # A short description of the application
@@ -40,5 +40,5 @@ networks:
 # This section contains the default values for your application settings.
 JIRA_CONTAINER_NAME: jira
 JIRA_PORT: 8099
-JIRA_TAG: 8.0.2
-JIRA_IMAGE: admpresales/jira
+JIRA_TAG: 8.12.3
+JIRA_IMAGE: atlassian/jira-software:
