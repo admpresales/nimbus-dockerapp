@@ -23,13 +23,13 @@ services:
   config-service:
     image: advantageonlineshopping/aos-configservice-dev:aos_config_deployment
     ports:
-      - "8004:8004"
+      - "${CONFIG_SERVICE_PORT}:${CONFIG_SERVICE_PORT}"
     container_name: aos_config_service
     restart: always
     environment:
       - CONFIG_REPO_FILE_SYSTEM=file:///configservice/microservices
       - CONFIG_SERVICE_ACTIVE_PROFILE=native
-      - SERVER_PORT=8004
+      - SERVER_PORT=${CONFIG_SERVICE_PORT}
     networks:
         demo-net:
   gateway:
@@ -39,7 +39,7 @@ services:
     container_name: aos_gateway
     restart: always
     environment:
-      - CONFIG_SERVICE_URI=http://config-service:8004
+      - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
       - ACTIVE_PROFILE=dev
     depends_on:
       - "config-service"
@@ -112,7 +112,7 @@ ACCOUNT_TAG: "aos_config_deployment"
 MAIN_AGENT_NAME: "aos-main-dev"
 MAIN_NAME: aos_main
 MAIN_IP: nimbusserver.aos.com
-MAIN_PORT: "8002"
+MAIN_PORT: "8000"
 MAIN_IMAGE: advantageonlineshopping/aos-main-app-dev
 MAIN_TAG: "latest"
 PGPASSWORD: Ptr9=k_.A*xx=PGn
@@ -122,7 +122,7 @@ POSTGRES_PORT: "5432"
 POSTGRES_IMAGE: advantageonlineshopping/aos-postgres-dev
 POSTGRES_TAG: "latest"
 CONFIG_SERVICE_PORT: 8003
-GATEWAY_PORT: 8000
+GATEWAY_PORT: 8002
 ACTIVE_PROFILE: dev
 CONFIG_FILE_URI: /configservice/config-repo
 
