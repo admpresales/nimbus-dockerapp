@@ -56,6 +56,9 @@ services:
         demo-net:
   aos_accountservice:
     image: ${ACCOUNT_IMAGE}:${ACCOUNT_TAG}
+    depends_on:
+      - "config-service"
+      - "postgresql"
     ports:
     - "${ACCOUNT_PORT}:8080"
     environment:
@@ -67,6 +70,8 @@ services:
     - ACCOUNT_PORT
     - PGPASSWORD
     - "AGENT_NAME=${ACCOUNT_AGENT_NAME}"
+    - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
+    - ACTIVE_PROFILE=dev
     depends_on:
     - "aos_postgres"
     container_name: ${ACCOUNT_NAME}
