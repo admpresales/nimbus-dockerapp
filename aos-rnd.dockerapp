@@ -114,13 +114,13 @@ MAIN_NAME: aos_main
 MAIN_IP: nimbusserver.aos.com
 MAIN_PORT: "8002"
 MAIN_IMAGE: advantageonlineshopping/aos-main-app-dev
-MAIN_TAG: "aos_config_deployment"
+MAIN_TAG: "latest"
 PGPASSWORD: Ptr9=k_.A*xx=PGn
 POSTGRES_IP: aos_postgres
 POSTGRES_NAME: aos_postgres
 POSTGRES_PORT: "5432"
 POSTGRES_IMAGE: advantageonlineshopping/aos-postgres-dev
-POSTGRES_TAG: "aos_config_deployment"
+POSTGRES_TAG: "latest"
 CONFIG_SERVICE_PORT: 8003
 GATEWAY_PORT: 8000
 ACTIVE_PROFILE: dev
