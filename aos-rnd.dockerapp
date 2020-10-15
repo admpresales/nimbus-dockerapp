@@ -93,6 +93,8 @@ services:
     - ACCOUNT_PORT
     - PGPASSWORD
     - "AGENT_NAME=${MAIN_AGENT_NAME}"
+    - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
+    - ACTIVE_PROFILE=dev
     depends_on:
     - "aos_accountservice"
     container_name: ${MAIN_NAME}
