@@ -96,7 +96,7 @@ services:
     - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
     - ACTIVE_PROFILE=dev
     depends_on:
-    - "aos_accountservice"
+    - "aos-postgres"
     container_name: ${MAIN_NAME}
     networks:
         demo-net:
