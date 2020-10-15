@@ -45,7 +45,7 @@ services:
       - "config-service"
     networks:
         demo-net:
-  aos_postgres:
+  aos-postgres:
     image: ${POSTGRES_IMAGE}:${POSTGRES_TAG}
     ports:
     - "${POSTGRES_PORT}:5432"
@@ -54,11 +54,11 @@ services:
     container_name: ${POSTGRES_NAME}
     networks:
         demo-net:
-  aos_accountservice:
+  aos-accountservice:
     image: ${ACCOUNT_IMAGE}:${ACCOUNT_TAG}
     depends_on:
       - "config-service"
-      - "postgresql"
+      - "aos-postgres"
     ports:
     - "${ACCOUNT_PORT}:8080"
     environment:
@@ -73,14 +73,14 @@ services:
     - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
     - ACTIVE_PROFILE=dev
     depends_on:
-    - "aos_postgres"
+    - "aos-postgres"
     container_name: ${ACCOUNT_NAME}
     networks:
         demo-net:
     extra_hosts:
         - "nimbusserver.aos.com:172.50.0.1"
         - "nimbusserver:172.50.0.1"
-  aos_main:
+  aos-main:
     image: ${MAIN_IMAGE}:${MAIN_TAG}
     ports:
     - "${MAIN_PORT}:8080"
