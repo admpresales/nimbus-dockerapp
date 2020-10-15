@@ -28,6 +28,7 @@ services:
     container_name: jenkins-build
     volumes:
       - /jenkins:/var/jenkins_home
+    restart: always
 
 
 ---
