@@ -40,7 +40,7 @@ services:
     restart: always
     environment:
       - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
-      - ACTIVE_PROFILE=dev
+      - ACTIVE_PROFILE=${ACTIVE_PROFILE}
     depends_on:
       - "config-service"
     networks:
@@ -71,7 +71,7 @@ services:
     - PGPASSWORD
     - "AGENT_NAME=${ACCOUNT_AGENT_NAME}"
     - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
-    - ACTIVE_PROFILE=dev
+    - ACTIVE_PROFILE=${ACTIVE_PROFILE}
     depends_on:
     - "aos-postgres"
     container_name: ${ACCOUNT_NAME}
@@ -94,7 +94,7 @@ services:
     - PGPASSWORD
     - "AGENT_NAME=${MAIN_AGENT_NAME}"
     - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
-    - ACTIVE_PROFILE=dev
+    - ACTIVE_PROFILE=${ACTIVE_PROFILE}
     depends_on:
     - "aos-postgres"
     container_name: ${MAIN_NAME}
@@ -111,25 +111,25 @@ networks:
 ---
 # This section contains the default values for your application settings.
 ACCOUNT_AGENT_NAME: "aos-accountservice-dev"
-ACCOUNT_NAME: aos_accountservice
+ACCOUNT_NAME: aos-accountservice
 ACCOUNT_IP: nimbusserver.aos.com
 ACCOUNT_PORT: "8001"
 ACCOUNT_IMAGE: advantageonlineshopping/aos-accountservice-dev
 ACCOUNT_TAG: "aos_config_deployment"
 MAIN_AGENT_NAME: "aos-main-dev"
-MAIN_NAME: aos_main
+MAIN_NAME: aos-main
 MAIN_IP: nimbusserver.aos.com
 MAIN_PORT: "8000"
 MAIN_IMAGE: advantageonlineshopping/aos-main-app-dev
 MAIN_TAG: "latest"
 PGPASSWORD: Ptr9=k_.A*xx=PGn
-POSTGRES_IP: aos_postgres
-POSTGRES_NAME: aos_postgres
+POSTGRES_IP: aos-postgres
+POSTGRES_NAME: aos-postgres
 POSTGRES_PORT: "5432"
 POSTGRES_IMAGE: advantageonlineshopping/aos-postgres-dev
 POSTGRES_TAG: "latest"
 CONFIG_SERVICE_PORT: 8003
 GATEWAY_PORT: 8002
-ACTIVE_PROFILE: dev
+ACTIVE_PROFILE: prod
 CONFIG_FILE_URI: /configservice/config-repo
 
