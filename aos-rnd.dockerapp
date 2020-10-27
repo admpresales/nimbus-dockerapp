@@ -33,7 +33,7 @@ services:
       - POSTGRES_SERVICE_NAME=${POSTGRES_NAME}
       - MAIN_SERVICE_NAME=${MAIN_NAME}
       - ACCOUNT_SERVICE_NAME=${ACCOUNT_NAME}
-      -	ACTIVE_PROFILE=prod
+      - ACTIVE_PROFILE=${ACTIVE_PROFILE}
     networks:
         demo-net:
   gateway:
