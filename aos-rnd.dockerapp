@@ -24,7 +24,7 @@ services:
     image: advantageonlineshopping/aos-configservice-dev:aos_config_deployment
     ports:
       - "${CONFIG_SERVICE_PORT}:${CONFIG_SERVICE_PORT}"
-    container_name: aos_config_service
+    container_name: aos-config-service
     restart: always
     environment:
       - CONFIG_REPO_FILE_SYSTEM=file:///configservice/microservices
@@ -40,7 +40,7 @@ services:
     image: advantageonlineshopping/aos-gateway-dev:aos_config_deployment
     ports:
       - "${GATEWAY_PORT}:8080"
-    container_name: aos_gateway
+    container_name: aos-gateway
     restart: always
     environment:
       - CONFIG_SERVICE_URI=http://config-service:${CONFIG_SERVICE_PORT}
