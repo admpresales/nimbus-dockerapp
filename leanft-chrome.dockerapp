@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: "15.0"
+version: "15.2"
 # Name of the application
 name: leanft-chrome
 # A short description of the application
@@ -44,7 +44,7 @@ networks:
 # This section contains the default values for your application settings.
 LEANFT_CHROME_CONTAINER_NAME: leanft-chrome
 LEANFT_CHROME_IMAGE: functionaltesting/leanft-chrome
-LEANFT_CHROME_TAG: "15.0"
+LEANFT_CHROME_TAG: "15.2"
 LEANFT_ENGINE_PORT: 5095
 LFT_LIC_SERVER: autopass
 LFT_LIC_ID: 23078
