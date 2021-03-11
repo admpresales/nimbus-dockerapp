@@ -29,6 +29,8 @@ services:
     volumes:
       - /jenkins:/var/jenkins_home
     restart: always
+    environment:
+      JENKINS_SLAVE_AGENT_PORT: 50001
 
 
 ---
