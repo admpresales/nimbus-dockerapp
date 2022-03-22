@@ -1,6 +1,6 @@
 # This section contains your application metadata.
 # Version of the application
-version: 9.60-15.0.60.90
+version: 10.0.1-16.0.300.70
 # Name of the application
 name: ppm-octane
 # A short description of the application
@@ -59,7 +59,7 @@ networks:
 ---
 # This section contains the default values for your application settings.
 OCTANE_IMAGE: admpresales/octane
-OCTANE_TAG: 15.0.60.90_di-ppm9.60_di
+OCTANE_TAG: 16.0.300.70_di-ppm10.0.1_di
 OCTANE_HOST: nimbusserver.aos.com
 OCTANE_CONTAINER_NAME: octane-ppm
 INTEGRATION_BRIDGE_PORT: 9081
@@ -69,7 +69,7 @@ SYNCHRONIZER_PORT: 9082
 OCTANE_SHM_SIZE: 2G
 PPM_CONTAINER_NAME: ppm-octane
 PPM_IMAGE: admpresales/ppm
-PPM_TAG: 9.60_di-octane15.0.60.90_di
+PPM_TAG: 10.0.1_di-octane16.0.300.70_di
 PPM_PORT: 8087
 PPM_SHM_SIZE: 2G
 PPM_DB_PORT: 1098
